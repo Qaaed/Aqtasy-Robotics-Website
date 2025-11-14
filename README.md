@@ -20,21 +20,7 @@
 <ul>
   <li><b>Frontend:</b> React.js</li>
   <li><b>Styling:</b> Tailwind CSS</li>
-  <li><b>Hosting:</b> Vercel</li>
+  <li><b>Hosting:</b> TBA</li>
 </ul>
-
----
-
-<h2>👨‍💻 Team</h2>
-<p>This project was developed by a team of 6 members as part of Aqtasy Robotics.</p>
-
----
-
-<h2>🚀 Deployment</h2>
-<p>
-Deployed easily using <a href="https://vercel.com/" target="_blank">Vercel</a> — simply connect the GitHub repository and it automatically builds and deploys on each push.
-</p>
-
-
 
 <h3 align="center">Built with passion by the Aqtasy Robotics Team</h3>
