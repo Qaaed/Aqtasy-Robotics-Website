@@ -112,7 +112,7 @@ export const JOURNEY_DATA = [
   {
     title: "Website Design Discussion",
     description:
-      "After the team finalized on the idea for the robot we went ahead with the website design.",
+      "After the team finalized on the idea for the robot we went ahead with the website design. Sahetyan was there in heart 😂",
     image: website_design,
   },
   {
