@@ -1,5 +1,16 @@
-import first_meeting from "./assets/first_meeting.jpg";
-import website_design from "./assets/website_design.jpg";
+//Meeting images
+import first_meeting from "./assets/Meeting_Images/first_meeting.jpg";
+import website_design from "./assets/Meeting_Images/website_design.jpg";
+import black_day from "./assets/Meeting_Images/black__day.jpg";
+
+//profile pictures for team card
+import qaaed_pic from "./assets/Group_Members/Qaaed.jpeg";
+import aabid_pic from "./assets/Group_Members/Aabid.jpeg";
+import yousuf_pic from "./assets/Group_Members/Yousuf2.jpg";
+import sahetyan_pic from "./assets/Group_Members/sahetyan.jpg";
+import taahir_pic from "./assets/Group_Members/Taahir.jpg";
+import ackash_pic from "./assets/Group_Members/Ackash.jpeg";
+
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "Our Approach", href: "#about" },
@@ -45,60 +56,60 @@ export const TECH_STACK_DATA = {
     { name: "High-Res Display" },
     { name: "Servo Motors" },
     { name: "LiDAR Sensor" },
-    { name: "Microphone Array" },
+    { name: "USB Microphone" },
   ],
   software: [
-    { name: "React Native" },
-    { name: "Python" },
+    { name: "React JS" },
+    { name: "Express JS" },
     { name: "TensorFlow" },
-    { name: "Google Cloud" },
+    { name: "Mongo DB" },
     { name: "Firebase" },
-    { name: "Docker" },
+    { name: "Azure AI" },
   ],
 };
 
 export const TEAM_DATA = [
   {
-    name: "Aqtasy Robotics",
-    role: "Lead Development",
-    image: "https://picsum.photos/seed/aqtasy/400",
-    linkedin: "#",
-    github: "#",
+    name: "Yousuf Nizar",
+    role: "Lead Developer in Hardware, Software and ML",
+    image: yousuf_pic,
+    linkedin: "https://www.linkedin.com/in/yousufnizar/",
+    github: "https://github.com/YousufNizar",
   },
   {
-    name: "Group CS-37",
-    role: "Research & AI",
-    image: "https://picsum.photos/seed/cs37/400",
-    linkedin: "#",
-    github: "#",
+    name: "Ramesh Sahethyan",
+    role: "Hardware and Machine Learning Engineer",
+    image: sahetyan_pic,
+    linkedin: "https://www.linkedin.com/in/ramesh-sahethyan-8ab194349/",
+    github: "https://github.com/Sahethyan",
   },
   {
-    name: "Dr. Evelyn Reed",
-    role: "Neurolinguistics Advisor",
-    image: "https://picsum.photos/seed/evelyn/400",
-    linkedin: "#",
-    github: "#",
+    name: "Ganeshamoorthy Ackaash",
+    role: "Machine Learning Engineer",
+    image: ackash_pic,
+    linkedin: "http://www.linkedin.com/in/ackaash-ganeshamoorthy",
+    github: "https://github.com/ackaashg-eng",
   },
   {
-    name: "Ben Carter",
-    role: "Lead Hardware Engineer",
-    image: "https://picsum.photos/seed/ben/400",
-    linkedin: "#",
-    github: "#",
+    name: "Qaaed Usaim",
+    role: "Lead Software Developer",
+    image: qaaed_pic,
+    linkedin: "https://www.linkedin.com/in/qaaedusaim/",
+    github: "https://github.com/Qaaed",
   },
   {
-    name: "Olivia Chen",
-    role: "UX/UI Designer",
-    image: "https://picsum.photos/seed/olivia/400",
-    linkedin: "#",
-    github: "#",
+    name: "Aabid Zimal",
+    role: "UX/UI Designer and Software Developer",
+    image: aabid_pic,
+    linkedin: "https://www.linkedin.com/in/aabid-zimal-00a928283/",
+    github: "https://github.com/aabid-26",
   },
   {
-    name: "Samuel Rodriguez",
-    role: "Software Developer",
-    image: "https://picsum.photos/seed/samuel/400",
-    linkedin: "#",
-    github: "#",
+    name: "Taahir-ul-hassen",
+    role: "Lead of Marketing and Finance",
+    image: taahir_pic,
+    linkedin: "https://www.linkedin.com/in/taahir-mowlana-555316305/",
+    github: "https://github.com/taahirmowlana",
   },
 ];
 
@@ -119,7 +130,7 @@ export const JOURNEY_DATA = [
     title: "Planning & Brainstorming",
     description:
       "Mapping out the robot's features, design, and the technology stack. Our team held intensive workshops to define the user experience and hardware requirements.",
-    image: "https://picsum.photos/seed/planning-new/800/450",
+    image: black_day,
   },
   {
     title: "Component Testing & Prototyping",
