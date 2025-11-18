@@ -9,7 +9,7 @@ import aabid_pic from "./assets/Group_Members/Aabid.jpeg";
 import yousuf_pic from "./assets/Group_Members/Yousuf2.jpg";
 import sahetyan_pic from "./assets/Group_Members/sahetyan.jpg";
 import taahir_pic from "./assets/Group_Members/Taahir.jpg";
-import ackash_pic from "./assets/Group_Members/Ackash.jpeg";
+import ackash_pic from "./assets/Group_Members/Ackaash.jpg";
 
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
