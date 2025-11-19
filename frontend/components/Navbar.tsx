@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NAV_LINKS } from "../constants";
 import DarkModeToggle from "./DarkModeToggle";
-import { LogoIcon, MenuIcon, CloseIcon } from "./icons";
+import Logo from "../assets/logo.svg";
+import { MenuIcon, CloseIcon } from "./icons";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,19 +63,25 @@ const Navbar: React.FC = () => {
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          <div className="flex-shrink-0">
+          {/* LEFT: Logo */}
+          <div className="flex-shrink-0 flex items-center">
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "#home")}
               className="flex items-center space-x-2 text-[#3A2F5A] transition-transform duration-300 hover:scale-105"
             >
-              <LogoIcon className="h-10 w-10" />
-              <span className="font-bold text-2xl text-[#1A1A1A] dark:text-[#E5E5E5]">
-                Aphasia Robot
-              </span>
+              <img
+                src={Logo}
+                alt="Logo"
+                className="h-40 w-40 object-contain"
+                draggable="false"
+              />
             </a>
           </div>
-          <div className="hidden md:flex items-center space-x-2">
+
+          {/* CENTER: Nav Links (Desktop) */}
+          {/* flex-1 allows this div to take up available space, justify-center centers the content */}
+          <div className="hidden md:flex flex-1 justify-center items-center space-x-2">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
@@ -89,14 +96,20 @@ const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
+          </div>
+
+          {/* RIGHT: Actions (Launch App & Dark Mode) */}
+          <div className="hidden md:flex items-center space-x-4">
             <a
               href="#"
-              className="ml-4 bg-[#3A2F5A] text-white font-semibold px-4 py-2 rounded-lg shadow-sm hover:bg-opacity-90 transform hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
+              className="bg-[#3A2F5A] text-white font-semibold px-4 py-2 rounded-lg shadow-sm hover:bg-opacity-90 transform hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
             >
               Launch App
             </a>
             <DarkModeToggle />
           </div>
+
+          {/* Mobile Menu Button (Right) */}
           <div className="md:hidden flex items-center">
             <DarkModeToggle />
             <button
@@ -113,7 +126,7 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
         className={`${
           isOpen ? "block" : "hidden"

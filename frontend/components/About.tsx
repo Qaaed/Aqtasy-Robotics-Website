@@ -1,6 +1,7 @@
 import React from "react";
 import AnimatedSection from "./AnimatedSection";
 import { BrainIcon, RobotIcon } from "./icons";
+import aphasia_about from "../assets/aphasia_robot/aphasia.jpg";
 
 const InfoCard: React.FC<{
   icon: React.ReactNode;
@@ -65,7 +66,7 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <AnimatedSection>
             <img
-              src="https://picsum.photos/seed/communication/800/500"
+              src={aphasia_about}
               alt="Person communicating"
               className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
             />
@@ -116,10 +117,10 @@ const About: React.FC = () => {
           >
             <p className="mb-4">
               Our solution is not meant to replace human expertise; it's
-              designed to enhance it. We actively collaborate with leading
-              **Speech Therapy Clinics, hospitals, and Aphasia specialists** to
-              ensure the robotic therapy modules are clinically validated and
-              align perfectly with established rehabilitation protocols.
+              designed to enhance it. We are actively collaborating with leading
+              Speech Therapy Clinics, and Aphasia specialists to ensure the
+              robotic therapy modules are clinically validated and align
+              perfectly with established rehabilitation protocols.
             </p>
             <p className="font-semibold text-[#1A1A1A] dark:text-white">
               Key Benefits for Clinics: Our platform provides therapists with

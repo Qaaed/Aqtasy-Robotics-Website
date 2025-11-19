@@ -1,7 +1,14 @@
-//Meeting images
+//Initial Start of the Project
 import first_meeting from "./assets/Meeting_Images/first_meeting.jpg";
-import website_design from "./assets/Meeting_Images/website_design.jpg";
+import robot_designs from "./assets/Meeting_Images/robot_designs.jpg";
 import black_day from "./assets/Meeting_Images/black__day.jpg";
+
+//Meeting with Speech Therapist
+import SpeechTherapist from "./assets/Meeting_Images/SpeechTherapist.jpg";
+import taahir_aabid from "./assets/Meeting_Images/taahir_aabid.jpg";
+
+//website design images
+import website_design from "./assets/Meeting_Images/website_design.jpg";
 
 //profile pictures for team card
 import qaaed_pic from "./assets/Group_Members/Qaaed.jpeg";
@@ -113,47 +120,52 @@ export const TEAM_DATA = [
   },
 ];
 
+// ... existing imports
+
 export const JOURNEY_DATA = [
   {
-    title: "First Team Meeting",
+    title: "Initial Start of the Project",
     description:
-      "Finalized on our IOT based Solution and brainstorming ideas related to it.",
-    image: first_meeting,
+      "Brainstorming ideas related to robotics, we explored various approaches to address the problem and worked on conceptualizing an effective solution. This process included sketching preliminary designs, discussing potential functionalities, and gradually shaping the overall design of the robot.",
+    images: [first_meeting, black_day, robot_designs],
   },
   {
-    title: "Website Design Discussion",
+    title: "Meeting with Speech Therapist",
     description:
-      "After the team finalized on the idea for the robot we went ahead with the website design. Sahetyan was there in heart 😂",
-    image: website_design,
+      "After the team finalized the idea for the robot, we proceeded to collaborate with a certified speech therapist, Ms. Buddhima Samaraweera. She played a crucial role in shaping the concept by providing her expert insights into the challenges faced by individuals with speech difficulties. Through discussions and brainstorming sessions with her, she helped us understand the practical needs of users and suggested innovative features that would make the robot more effective in assisting adults with aphasia. Her guidance was instrumental in refining our initial concept, turning it into a feasible and impactful solution.",
+    images: [SpeechTherapist, taahir_aabid],
   },
   {
-    title: "Planning & Brainstorming",
+    title: "Construction of the Marketing website",
     description:
-      "Mapping out the robot's features, design, and the technology stack. Our team held intensive workshops to define the user experience and hardware requirements.",
-    image: black_day,
+      "Discussed the theme of the website and decided on the color palette",
+    images: [website_design, first_meeting],
   },
   {
     title: "Component Testing & Prototyping",
     description:
       "Sourcing and testing individual hardware components—servos, sensors, displays—and building the first low-fidelity prototypes to validate our mechanical designs.",
-    image: "https://picsum.photos/seed/prototyping/800/450",
+    images: [
+      "https://picsum.photos/seed/prototyping/800/450",
+      "https://picsum.photos/seed/test2/800/450",
+    ],
   },
   {
     title: "Building the Robot",
     description:
       "The physical assembly of our high-fidelity prototype. This phase involved intricate wiring, 3D printing custom parts, and bringing the robot's form to life.",
-    image: "https://picsum.photos/seed/building-robot/800/450",
+    images: ["https://picsum.photos/seed/building-robot/800/450"],
   },
   {
     title: "Software Integration & Training",
     description:
       "Developing the robot's 'brain'. We integrated our custom AI models for speech recognition and personalized feedback, and connected it to the companion app.",
-    image: "https://picsum.photos/seed/software/800/450",
+    images: ["https://picsum.photos/seed/software/800/450"],
   },
   {
     title: "Final Robot Completed",
     description:
       "After rigorous testing and refinement, the Aphasia Robot is complete—a polished, intelligent, and friendly companion ready to aid in the journey to recovery.",
-    image: "https://picsum.photos/seed/final-robot/800/450",
+    images: ["https://picsum.photos/seed/final-robot/800/450"],
   },
 ];
