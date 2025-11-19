@@ -1,7 +1,6 @@
-
-import React from 'react';
-import AnimatedSection from './AnimatedSection';
-import { BrainIcon, RobotIcon } from './icons';
+import React from "react";
+import AnimatedSection from "./AnimatedSection";
+import { BrainIcon, RobotIcon } from "./icons";
 
 const InfoCard: React.FC<{
   icon: React.ReactNode;
@@ -13,7 +12,9 @@ const InfoCard: React.FC<{
       <div className="bg-[#3A2F5A]/10 dark:bg-[#3A2F5A]/40 p-3 rounded-full text-[#3A2F5A] dark:text-white">
         {icon}
       </div>
-      <h3 className="text-2xl font-bold tracking-tight text-[#1A1A1A] dark:text-white">{title}</h3>
+      <h3 className="text-2xl font-bold tracking-tight text-[#1A1A1A] dark:text-white">
+        {title}
+      </h3>
     </div>
     <p className="text-[#6B7280] dark:text-[#9CA3AF] leading-relaxed">
       {children}
@@ -21,55 +22,113 @@ const InfoCard: React.FC<{
   </div>
 );
 
+// New Icon Placeholder for Collaboration (Using a simple SVG for two connected people/handshake concept)
+const HandshakeIcon: React.FC<{ className?: string }> = ({
+  className = "w-7 h-7",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20zm0-3a5 5 0 1 0-5-5 5 5 0 0 0 5 5z" />
+    <path d="M14 14a2 2 0 0 0 2-2 2 2 0 0 0-2-2m-4 4a2 2 0 0 1-2-2 2 2 0 0 1 2-2" />
+  </svg>
+);
+
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 sm:py-32 relative overflow-hidden bg-[#F9F9F9] dark:bg-[#121212]">
+    <section
+      id="about"
+      className="py-20 sm:py-32 relative overflow-hidden bg-[#F9F9F9] dark:bg-[#121212]"
+    >
       <div className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 w-96 h-96 bg-[#3A2F5A]/5 dark:bg-[#3A2F5A]/10 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-96 h-96 bg-[#3A2F5A]/5 dark:bg-[#3A2F5A]/10 rounded-full blur-3xl -z-10"></div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Understanding Aphasia, A New Approach</h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            Understanding Aphasia, A New Approach
+          </h2>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-[#6B7280] dark:text-[#9CA3AF]">
-            Aphasia is a complex language disorder. We believe technology can offer a personalized path to recovery.
+            Aphasia is a complex language disorder. We believe technology can
+            offer a personalized path to recovery.
           </p>
         </AnimatedSection>
 
+        {/* Block 1: What is Aphasia? */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <AnimatedSection>
-            <img 
-              src="https://picsum.photos/seed/communication/800/500" 
-              alt="Person communicating" 
+            <img
+              src="https://picsum.photos/seed/communication/800/500"
+              alt="Person communicating"
               className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
             />
           </AnimatedSection>
           <AnimatedSection>
-            <InfoCard 
-              icon={<BrainIcon className="w-7 h-7" />} 
+            <InfoCard
+              icon={<BrainIcon className="w-7 h-7" />}
               title="What is Aphasia?"
             >
-              Aphasia is an impairment of language, affecting the production or comprehension of speech and the ability to read or write. It's most commonly caused by a stroke, but can also result from head trauma, brain tumors, or infections. It's a condition that affects communication, not intelligence.
+              Aphasia is an impairment of language, affecting the production or
+              comprehension of speech and the ability to read or write. It's
+              most commonly caused by a stroke, but can also result from head
+              trauma, brain tumors, or infections. It's a condition that affects
+              communication, not intelligence.
             </InfoCard>
           </AnimatedSection>
         </div>
 
+        {/* Block 2: Our Robotic Solution */}
         <div className="grid md:grid-cols-2 gap-12 items-center mt-16 md:mt-24">
-           <AnimatedSection className="md:order-2">
-            <img 
-              src="https://picsum.photos/seed/robot-assist/800/500" 
-              alt="Robot assisting patient" 
+          <AnimatedSection className="md:order-2">
+            <img
+              src="https://picsum.photos/seed/robot-assist/800/500"
+              alt="Robot assisting patient"
               className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
             />
           </AnimatedSection>
           <AnimatedSection className="md:order-1">
-             <InfoCard 
+            <InfoCard
               icon={<RobotIcon className="w-7 h-7" />}
               title="Our Robotic Solution"
             >
-              The Aphasia Robot provides a unique solution by combining AI-driven personalized therapy with a physical companion. It creates an engaging, stress-free environment for patients to practice speech. Real-time feedback and adaptive exercises ensure that therapy is always challenging yet achievable, accelerating progress and rebuilding confidence.
+              The Aphasia Robot provides a unique solution by combining
+              AI-driven personalized therapy with a physical companion. It
+              creates an engaging, stress-free environment for patients to
+              practice speech. Real-time feedback and adaptive exercises ensure
+              that therapy is always challenging yet achievable, accelerating
+              progress and rebuilding confidence.
             </InfoCard>
           </AnimatedSection>
         </div>
+
+        {/* Block 3: Collaboration and Partnership (NEW SECTION) */}
+        <AnimatedSection className="mt-16 md:mt-24">
+          <InfoCard
+            icon={<HandshakeIcon className="w-7 h-7" />}
+            title="Designed in Collaboration with Experts"
+          >
+            <p className="mb-4">
+              Our solution is not meant to replace human expertise; it's
+              designed to enhance it. We actively collaborate with leading
+              **Speech Therapy Clinics, hospitals, and Aphasia specialists** to
+              ensure the robotic therapy modules are clinically validated and
+              align perfectly with established rehabilitation protocols.
+            </p>
+            <p className="font-semibold text-[#1A1A1A] dark:text-white">
+              Key Benefits for Clinics: Our platform provides therapists with
+              detailed, objective data on patient progress outside of sessions,
+              allowing for highly informed adjustments to the treatment plan and
+              maximizing the effectiveness of in-person time.
+            </p>
+          </InfoCard>
+        </AnimatedSection>
       </div>
     </section>
   );

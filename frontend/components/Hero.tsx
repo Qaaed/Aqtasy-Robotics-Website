@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
               href="#"
               className="inline-block bg-[#A29BFE] text-[#121212] font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
             >
-              Launch App - Redirects to official website
+              Launch App 
             </a>
             <a
               href="#about"

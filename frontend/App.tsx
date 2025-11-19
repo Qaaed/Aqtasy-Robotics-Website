@@ -1,13 +1,12 @@
-
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Features from './components/Features';
-import TechStack from './components/TechStack';
-import Team from './components/Team';
-import Footer from './components/Footer';
-import Journey from './components/Journey';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Features from "./components/Features";
+import TechStack from "./components/TechStack";
+import Team from "./components/Team";
+import Footer from "./components/Footer";
+import Journey from "./components/Journey";
 
 const App: React.FC = () => {
   return (
@@ -18,8 +17,8 @@ const App: React.FC = () => {
         <About />
         <Features />
         <TechStack />
-        <Journey />
         <Team />
+        <Journey />
       </main>
       <Footer />
     </div>
