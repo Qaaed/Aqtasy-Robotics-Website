@@ -52,10 +52,10 @@ export const FEATURES_DATA = [
 export const TECH_STACK_DATA = {
   hardware: [
     { name: "Raspberry Pi 4" },
-    { name: "Arduino Nano" },
+    { name: "Camera module" },
     { name: "High-Res Display" },
     { name: "Servo Motors" },
-    { name: "LiDAR Sensor" },
+    { name: "3D Printed Custom Enclosure" },
     { name: "USB Microphone" },
   ],
   software: [
