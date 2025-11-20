@@ -42,7 +42,8 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             {name}
           </h3>
           {/* *** CHANGE APPLIED HERE *** */}
-          <p className="text-indigo-600 dark:text-indigo-400 font-medium">
+          {/* Changed indigo shades to purpler/grayer shades that blend better */}
+          <p className="text-purple-700 dark:text-purple-300 font-medium">
             {role}
           </p>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-4 italic">

@@ -66,7 +66,7 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <AnimatedSection>
             <img
-              src={aphasia_about}
+              src=""
               alt="Person communicating"
               className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
             />
@@ -89,9 +89,9 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center mt-16 md:mt-24">
           <AnimatedSection className="md:order-2">
             <img
-              src="https://picsum.photos/seed/robot-assist/800/500"
+              src=""
               alt="Robot assisting patient"
-              className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+              className="rounded-xl shadow-2xl w-full h-  auto object-cover transition-transform duration-300 hover:scale-105"
             />
           </AnimatedSection>
           <AnimatedSection className="md:order-1">

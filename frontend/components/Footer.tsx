@@ -1,6 +1,6 @@
 import React from "react";
 import { LinkedInIcon, YouTubeIcon, TwitterIcon, EmailIcon } from "./icons";
-import { InstagramIcon } from "./icons"; // Make sure you added it above!
+import { InstagramIcon } from "./icons"; 
 
 const Footer: React.FC = () => {
   return (

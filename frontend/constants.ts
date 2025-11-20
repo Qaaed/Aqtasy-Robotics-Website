@@ -2,6 +2,7 @@
 import first_meeting from "./assets/Meeting_Images/first_meeting.jpg";
 import robot_designs from "./assets/Meeting_Images/robot_designs.jpg";
 import black_day from "./assets/Meeting_Images/black__day.jpg";
+import beforeFeedback from "./assets/Meeting_Images/beforeFeedback.jpg";
 
 //Meeting with Speech Therapist
 import SpeechTherapist from "./assets/Meeting_Images/SpeechTherapist.jpg";
@@ -120,14 +121,13 @@ export const TEAM_DATA = [
   },
 ];
 
-// ... existing imports
 
 export const JOURNEY_DATA = [
   {
     title: "Initial Start of the Project",
     description:
       "Brainstorming ideas related to robotics, we explored various approaches to address the problem and worked on conceptualizing an effective solution. This process included sketching preliminary designs, discussing potential functionalities, and gradually shaping the overall design of the robot.",
-    images: [first_meeting, black_day, robot_designs],
+    images: [first_meeting, black_day, robot_designs, beforeFeedback],
   },
   {
     title: "Meeting with Speech Therapist",
@@ -145,27 +145,24 @@ export const JOURNEY_DATA = [
     title: "Component Testing & Prototyping",
     description:
       "Sourcing and testing individual hardware components—servos, sensors, displays—and building the first low-fidelity prototypes to validate our mechanical designs.",
-    images: [
-      "https://picsum.photos/seed/prototyping/800/450",
-      "https://picsum.photos/seed/test2/800/450",
-    ],
+    images: [],
   },
   {
     title: "Building the Robot",
     description:
       "The physical assembly of our high-fidelity prototype. This phase involved intricate wiring, 3D printing custom parts, and bringing the robot's form to life.",
-    images: ["https://picsum.photos/seed/building-robot/800/450"],
+    images: [],
   },
   {
     title: "Software Integration & Training",
     description:
       "Developing the robot's 'brain'. We integrated our custom AI models for speech recognition and personalized feedback, and connected it to the companion app.",
-    images: ["https://picsum.photos/seed/software/800/450"],
+    images: [],
   },
   {
     title: "Final Robot Completed",
     description:
       "After rigorous testing and refinement, the Aphasia Robot is complete—a polished, intelligent, and friendly companion ready to aid in the journey to recovery.",
-    images: ["https://picsum.photos/seed/final-robot/800/450"],
+    images: [],
   },
 ];

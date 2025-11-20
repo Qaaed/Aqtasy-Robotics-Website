@@ -32,13 +32,13 @@ const JourneyCard: React.FC<{
     >
       <div className="md:w-5/12">
         <AnimatedSection className="w-full">
-          <div className="relative group bg-white dark:bg-[#1E1E2F] p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200/80 dark:border-gray-800/80 hover:border-[#3A2F5A]/50 dark:hover:border-[#3A2F5A] transition-all duration-300 transform hover:-translate-y-1">
+          {/* Updated Border Hover: 
+             Changed dark:hover:border-[#3A2F5A] to dark:hover:border-purple-400 
+             so the highlight is visible in dark mode. 
+          */}
+          <div className="relative group bg-white dark:bg-[#1E1E2F] p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200/80 dark:border-gray-800/80 hover:border-purple-500/50 dark:hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-1">
             {/* IMAGE CAROUSEL SECTION */}
             <div className="relative mb-4 overflow-hidden rounded-lg shadow-md aspect-video group/image">
-              {/* SLIDING TRACK 
-                 1. We render ALL images in a flex row.
-                 2. We translate the row based on the current index.
-              */}
               <div
                 className="flex h-full transition-transform duration-500 ease-in-out will-change-transform"
                 style={{
@@ -50,8 +50,6 @@ const JourneyCard: React.FC<{
                     key={idx}
                     src={imgSrc}
                     alt={`${phase.title} - view ${idx + 1}`}
-                    // min-w-full and shrink-0 ensure the image takes up the full width of the window
-                    // and doesn't get squished by flexbox
                     className="w-full min-w-full h-full object-cover shrink-0 transition-transform duration-500 hover:scale-105"
                   />
                 ))}
@@ -63,7 +61,8 @@ const JourneyCard: React.FC<{
                   {/* Left Arrow */}
                   <button
                     onClick={prevImage}
-                    className="absolute z-10 left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#3A2F5A] text-white p-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
+                    // Updated hover color to match theme
+                    className="absolute z-10 left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-purple-600 text-white p-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +83,8 @@ const JourneyCard: React.FC<{
                   {/* Right Arrow */}
                   <button
                     onClick={nextImage}
-                    className="absolute z-10 right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#3A2F5A] text-white p-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
+                    // Updated hover color to match theme
+                    className="absolute z-10 right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-purple-600 text-white p-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -118,9 +118,7 @@ const JourneyCard: React.FC<{
                 </>
               )}
             </div>
-
-            {/* TEXT CONTENT */}
-            <h3 className="text-xl font-bold text-[#3A2F5A] mb-2">
+            <h3 className="text-xl font-bold text-purple-700 dark:text-purple-300 mb-2">
               {phase.title}
             </h3>
             <p className="text-[#6B7280] dark:text-[#9CA3AF] text-sm leading-relaxed">
@@ -141,7 +139,7 @@ const Journey: React.FC = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <AnimatedSection className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#1A1A1A] dark:text-white">
             Our Journey
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-[#6B7280] dark:text-[#9CA3AF]">
@@ -161,7 +159,7 @@ const Journey: React.FC = () => {
               <div key={index} className="relative md:mb-16">
                 {/* Center Dots on Timeline */}
                 <div
-                  className="hidden md:flex absolute w-6 h-6 bg-[#3A2F5A] rounded-full items-center justify-center ring-8 ring-white/50 dark:ring-[#1E1E2F]/30"
+                  className="hidden md:flex absolute w-6 h-6 bg-purple-700 dark:bg-purple-400 rounded-full items-center justify-center ring-8 ring-white/50 dark:ring-[#1E1E2F]/30"
                   style={{
                     left: "50%",
                     top: "0",
