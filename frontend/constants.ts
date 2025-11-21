@@ -21,10 +21,10 @@ import ackash_pic from "./assets/Group_Members/Ackaash.jpg";
 
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
-  { name: "Our Approach", href: "#about" },
+  { name: "Approach", href: "#about" },
   { name: "Features", href: "#features" },
-  { name: "Tech Stack", href: "#tech" },
-  { name: "Our Journey", href: "#journey" },
+  { name: "Tech-Stack", href: "#tech" },
+  { name: "Journey", href: "#journey" },
   { name: "Team", href: "#team" },
 ];
 
