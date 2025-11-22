@@ -20,11 +20,15 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  // Logic to toggle flip on click
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <div
-      className="group aspect-square [perspective:1000px]"
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
+      className="group aspect-square [perspective:1000px] cursor-pointer"
+      onClick={handleCardClick}
     >
       <div
         className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
@@ -41,13 +45,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
           <h3 className="text-xl font-bold text-[#1A1A1A] dark:text-white">
             {name}
           </h3>
-          {/* *** CHANGE APPLIED HERE *** */}
-          {/* Changed indigo shades to purpler/grayer shades that blend better */}
           <p className="text-purple-700 dark:text-purple-300 font-medium">
             {role}
           </p>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-4 italic">
-            Hover to connect
+            Click to connect
           </p>
         </div>
 
@@ -61,6 +63,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="text-[#6B7280] dark:text-[#9CA3AF] hover:text-[#3A2F5A] dark:hover:text-white transition-colors transform hover:scale-110"
               aria-label={`${name}'s LinkedIn Profile`}
             >
@@ -70,6 +73,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
               href={github}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="text-[#6B7280] dark:text-[#9CA3AF] hover:text-[#3A2F5A] dark:hover:text-white transition-colors transform hover:scale-110"
               aria-label={`${name}'s GitHub Profile`}
             >

@@ -66,7 +66,7 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <AnimatedSection>
             <img
-              src=""
+              src={aphasia_about}
               alt="Person communicating"
               className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
             />

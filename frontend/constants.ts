@@ -24,8 +24,8 @@ export const NAV_LINKS = [
   { name: "Approach", href: "#about" },
   { name: "Features", href: "#features" },
   { name: "Tech-Stack", href: "#tech" },
-  { name: "Journey", href: "#journey" },
   { name: "Team", href: "#team" },
+  { name: "Journey", href: "#journey" },
 ];
 
 export const FEATURES_DATA = [
@@ -121,7 +121,6 @@ export const TEAM_DATA = [
   },
 ];
 
-
 export const JOURNEY_DATA = [
   {
     title: "Initial Start of the Project",
@@ -145,24 +144,6 @@ export const JOURNEY_DATA = [
     title: "Component Testing & Prototyping",
     description:
       "Sourcing and testing individual hardware components—servos, sensors, displays—and building the first low-fidelity prototypes to validate our mechanical designs.",
-    images: [],
-  },
-  {
-    title: "Building the Robot",
-    description:
-      "The physical assembly of our high-fidelity prototype. This phase involved intricate wiring, 3D printing custom parts, and bringing the robot's form to life.",
-    images: [],
-  },
-  {
-    title: "Software Integration & Training",
-    description:
-      "Developing the robot's 'brain'. We integrated our custom AI models for speech recognition and personalized feedback, and connected it to the companion app.",
-    images: [],
-  },
-  {
-    title: "Final Robot Completed",
-    description:
-      "After rigorous testing and refinement, the Aphasia Robot is complete—a polished, intelligent, and friendly companion ready to aid in the journey to recovery.",
     images: [],
   },
 ];
