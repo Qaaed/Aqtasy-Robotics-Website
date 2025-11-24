@@ -9,7 +9,9 @@ import SpeechTherapist from "./assets/Meeting_Images/SpeechTherapist.jpg";
 import taahir_aabid from "./assets/Meeting_Images/taahir_aabid.jpg";
 
 //website design images
-import website_design from "./assets/Meeting_Images/website_design.jpg";
+import website_design1 from "./assets/Meeting_Images/website_design1.jpg";
+import website_design2 from "./assets/Meeting_Images/website_design2.jpg";
+import website_design3 from "./assets/Meeting_Images/website_design3.jpg";
 
 //profile pictures for team card
 import qaaed_pic from "./assets/Group_Members/Qaaed.jpeg";
@@ -68,18 +70,18 @@ export const TECH_STACK_DATA = {
   ],
   software: [
     { name: "React JS" },
-    { name: "Express JS" },
-    { name: "TensorFlow" },
-    { name: "Mongo DB" },
     { name: "Firebase" },
-    { name: "Azure AI" },
+    { name: "TensorFlow" },
+    { name: "PostgreSQL" },
+    { name: "Fast API " },
+    { name: "Azure AI Services" },
   ],
 };
 
 export const TEAM_DATA = [
   {
     name: "Yousuf Nizar",
-    role: "Lead Developer in Hardware, Software and ML",
+    role: "Lead of Software, Hardware and Machine Learning",
     image: yousuf_pic,
     linkedin: "https://www.linkedin.com/in/yousufnizar/",
     github: "https://github.com/YousufNizar",
@@ -93,7 +95,7 @@ export const TEAM_DATA = [
   },
   {
     name: "Ganeshamoorthy Ackaash",
-    role: "Machine Learning Engineer",
+    role: "Machine Learning and Software Developer",
     image: ackash_pic,
     linkedin: "http://www.linkedin.com/in/ackaash-ganeshamoorthy",
     github: "https://github.com/ackaashg-eng",
@@ -107,14 +109,14 @@ export const TEAM_DATA = [
   },
   {
     name: "Aabid Zimal",
-    role: "UX/UI Designer and Software Developer",
+    role: "UI/UX Designer and Software Developer",
     image: aabid_pic,
     linkedin: "https://www.linkedin.com/in/aabid-zimal-00a928283/",
     github: "https://github.com/aabid-26",
   },
   {
     name: "Taahir-ul-hassen",
-    role: "Lead of Marketing and Finance",
+    role: "Researcher and innovator",
     image: taahir_pic,
     linkedin: "https://www.linkedin.com/in/taahir-mowlana-555316305/",
     github: "https://github.com/taahirmowlana",
@@ -137,8 +139,8 @@ export const JOURNEY_DATA = [
   {
     title: "Construction of the Marketing website",
     description:
-      "Discussed the theme of the website and decided on the color palette",
-    images: [website_design, first_meeting],
+      "Kicked off the website construction by aligning on a compelling thematic concept and a cohesive color palette designed to resonate with the target audience and reinforce brand messaging. This critical first step was documented through key design mockups, setting a clear and actionable visual direction for the entire development team.",
+    images: [website_design1, website_design2, website_design3],
   },
   {
     title: "Component Testing & Prototyping",

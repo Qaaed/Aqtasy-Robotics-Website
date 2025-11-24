@@ -2,6 +2,7 @@ import React from "react";
 import AnimatedSection from "./AnimatedSection";
 import { BrainIcon, RobotIcon } from "./icons";
 import aphasia_about from "../assets/aphasia_robot/aphasia.jpg";
+import robotSolution from "../assets/aphasia_robot/robotSolution.jpg";
 
 const InfoCard: React.FC<{
   icon: React.ReactNode;
@@ -89,7 +90,7 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center mt-16 md:mt-24">
           <AnimatedSection className="md:order-2">
             <img
-              src=""
+              src={robotSolution}
               alt="Robot assisting patient"
               className="rounded-xl shadow-2xl w-full h-  auto object-cover transition-transform duration-300 hover:scale-105"
             />

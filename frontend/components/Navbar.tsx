@@ -9,7 +9,6 @@ const Navbar: React.FC = () => {
   const [activeLink, setActiveLink] = useState("#home");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Custom smooth scroll handler
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
@@ -73,14 +72,14 @@ const Navbar: React.FC = () => {
               <img
                 src={Logo}
                 alt="Logo"
-                className="h-40 w-40 object-contain"
+                // *** CHANGED HERE: Added dark:brightness-0 dark:invert ***
+                className="h-40 w-40 object-contain dark:brightness-0 dark:invert transition-all duration-300"
                 draggable="false"
               />
             </a>
           </div>
 
           {/* CENTER: Nav Links (Desktop) */}
-          {/* flex-1 allows this div to take up available space, justify-center centers the content */}
           <div className="hidden md:flex flex-1 justify-center items-center space-x-2">
             {NAV_LINKS.map((link) => (
               <a
