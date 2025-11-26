@@ -7,6 +7,7 @@ import TechStack from "./components/TechStack";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
 import Journey from "./components/Journey";
+import Pricing from "./components/Pricing";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <About />
         <Features />
         <TechStack />
+        <Pricing />
         <Team />
         <Journey />
       </main>

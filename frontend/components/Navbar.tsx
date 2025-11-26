@@ -1,36 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { NAV_LINKS } from "../constants";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "../assets/logo.svg";
 import { MenuIcon, CloseIcon } from "./icons";
+
+// *** NAV LINKS DEFINED LOCALLY ***
+const NAV_LINKS = [
+  { name: "Home", href: "#home" },
+  { name: "Approach", href: "#about" },
+  { name: "Features", href: "#features" },
+  { name: "Tech-Stack", href: "#tech" },
+  { name: "Pricing", href: "#pricing" }, // Added Pricing
+  { name: "Team", href: "#team" },
+  { name: "Journey", href: "#journey" },
+];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // --- HANDLE CLICK (Fixes the delay) ---
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
     e.preventDefault();
+
+    // 1. UPDATE STATE IMMEDIATELY (Instant Feedback)
+    setActiveLink(href);
+
     const targetElement = document.querySelector(href);
     if (targetElement) {
-      const headerOffset = 96;
+      const headerOffset = 96; // Height of navbar + some padding
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerOffset;
 
+      // 2. SMOOTH SCROLL
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
       });
 
+      // 3. UPDATE URL & CLOSE MOBILE MENU
       history.pushState(null, "", href);
-      setIsOpen(false); // Close mobile menu upon selection
+      setIsOpen(false);
     }
   };
 
+  // --- HANDLE SCROLL (Updates link when user scrolls manually) ---
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -38,21 +56,32 @@ const Navbar: React.FC = () => {
       const sections = NAV_LINKS.map((link) =>
         document.querySelector(link.href)
       );
-      let current = "#home";
+
+      // Only calculate active section if we are NOT currently clicking (optional optimization)
+      // But for simplicity, we let the scroll listener run to catch manual scrolling
+      let current = "";
+
       sections.forEach((section) => {
-        if (
-          section &&
-          window.scrollY >= (section as HTMLElement).offsetTop - 100
-        ) {
-          current = `#${section.id}`;
+        if (section) {
+          const sectionTop = (section as HTMLElement).offsetTop;
+          // -100px offset helps trigger the active state a bit before the section hits the very top
+          if (window.scrollY >= sectionTop - 150) {
+            current = `#${section.id}`;
+          }
         }
       });
-      setActiveLink(current);
+
+      // Only update if we found a section and it's different
+      if (current && current !== activeLink) {
+        // Note: If you scroll really fast while a click animation is happening,
+        // this might override the click state temporarily, but usually it feels natural.
+        setActiveLink(current);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [activeLink]); // Added dependency to keep state fresh
 
   const navClass = isScrolled ? "shadow-xl" : "";
 
@@ -72,7 +101,7 @@ const Navbar: React.FC = () => {
               <img
                 src={Logo}
                 alt="Logo"
-                // *** CHANGED HERE: Added dark:brightness-0 dark:invert ***
+                // Logo becomes white (inverted) in dark mode
                 className="h-40 w-40 object-contain dark:brightness-0 dark:invert transition-all duration-300"
                 draggable="false"
               />
@@ -86,7 +115,7 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`px-5 py-2.5 rounded-full text-base font-semibold transition-all duration-300 ${
+                className={`px-3 lg:px-5 py-2.5 rounded-full text-sm lg:text-base font-semibold transition-all duration-300 ${
                   activeLink === link.href
                     ? "bg-black/5 dark:bg-white/10 text-[#1A1A1A] dark:text-white"
                     : "text-[#6B7280] dark:text-[#9CA3AF] hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#1A1A1A] dark:hover:text-white"

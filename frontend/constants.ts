@@ -13,8 +13,13 @@ import website_design1 from "./assets/Meeting_Images/website_design1.jpg";
 import website_design2 from "./assets/Meeting_Images/website_design2.jpg";
 import website_design3 from "./assets/Meeting_Images/website_design3.jpg";
 
+//submission
+import lateFeedback from "./assets/Meeting_Images/lateFeedback.jpg";
+import brainstorming1 from "./assets/Meeting_Images/brainstorming1.jpg";
+import doneWfeedback from "./assets/Meeting_Images/doneWfeedback.jpg";
+
 //profile pictures for team card
-import qaaed_pic from "./assets/Group_Members/Qaaed.jpeg";
+import qaaed_pic from "./assets/Group_Members/Qaaed2.jpeg";
 import aabid_pic from "./assets/Group_Members/Aabid.jpeg";
 import yousuf_pic from "./assets/Group_Members/Yousuf2.jpg";
 import sahetyan_pic from "./assets/Group_Members/sahetyan.jpg";
@@ -26,6 +31,7 @@ export const NAV_LINKS = [
   { name: "Approach", href: "#about" },
   { name: "Features", href: "#features" },
   { name: "Tech-Stack", href: "#tech" },
+  { name: "Pricing", href: "#pricing" },
   { name: "Team", href: "#team" },
   { name: "Journey", href: "#journey" },
 ];
@@ -116,7 +122,7 @@ export const TEAM_DATA = [
   },
   {
     name: "Taahir-ul-hassen",
-    role: "Researcher and innovator",
+    role: "Researcher and Software Developer",
     image: taahir_pic,
     linkedin: "https://www.linkedin.com/in/taahir-mowlana-555316305/",
     github: "https://github.com/taahirmowlana",
@@ -143,9 +149,9 @@ export const JOURNEY_DATA = [
     images: [website_design1, website_design2, website_design3],
   },
   {
-    title: "Component Testing & Prototyping",
+    title: "Extra Feedback Sessions",
     description:
-      "Sourcing and testing individual hardware components—servos, sensors, displays—and building the first low-fidelity prototypes to validate our mechanical designs.",
-    images: [],
+      "Commitment to Technical Excellence: Success required more than just a plan; it required mastery of our tools. Our group dedicated extra hours to specialized feedback sessions, using them as intensive learning opportunities. These sessions bridged the gap between theory and practice, allowing us to fully understand the capabilities of our chosen hardware and software, ensuring a seamless final product.",
+    images: [lateFeedback, brainstorming1, doneWfeedback],
   },
 ];
