@@ -69,13 +69,13 @@ export const TECH_STACK_DATA = {
   hardware: [
     { name: "Raspberry Pi 4" },
     { name: "Camera module" },
-    { name: "High-Res Display" },
+    { name: "High-Res 7inch Touch Display" },
     { name: "Servo Motors" },
     { name: "3D Printed Custom Enclosure" },
     { name: "USB Microphone" },
   ],
   software: [
-    { name: "React JS" },
+    { name: "Whisper" },
     { name: "Firebase" },
     { name: "TensorFlow" },
     { name: "PostgreSQL" },
@@ -152,6 +152,6 @@ export const JOURNEY_DATA = [
     title: "Extra Feedback Sessions",
     description:
       "Commitment to Technical Excellence: Success required more than just a plan; it required mastery of our tools. Our group dedicated extra hours to specialized feedback sessions, using them as intensive learning opportunities. These sessions bridged the gap between theory and practice, allowing us to fully understand the capabilities of our chosen hardware and software, ensuring a seamless final product.",
-    images: [lateFeedback, brainstorming1, doneWfeedback],
+    images: [ brainstorming1, doneWfeedback, lateFeedback],
   },
 ];
