@@ -2,15 +2,14 @@
 <p align="center">
   <b>Official Marketing Website for Aqtasy Robotics</b><br>
   Built using <a href="https://react.dev/" target="_blank">React.js</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a><br>
-  Hosted on <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 
 ---
 
 <h2>🌐 Live Website</h2>
 <p>
-  <a href="https://aqtasy-robotics.vercel.app" target="_blank">
-    🔗 https://aqtasy-robotics.vercel.app
+  <a href="https://aqtasyrobotics.com/" target="_blank">
+    🔗 https://aqtasyrobotics.com/
   </a>
 </p>
 
@@ -20,7 +19,5 @@
 <ul>
   <li><b>Frontend:</b> React.js</li>
   <li><b>Styling:</b> Tailwind CSS</li>
-  <li><b>Hosting:</b> TBA</li>
 </ul>
 
-<h3 align="center">Built with passion by the Aqtasy Robotics Team</h3>
