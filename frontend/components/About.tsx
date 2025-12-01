@@ -1,30 +1,63 @@
 import React from "react";
+import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import { BrainIcon, RobotIcon } from "./icons";
 import aphasia_about from "../assets/aphasia_robot/aphasia.jpg";
 import robotSolution from "../assets/aphasia_robot/robotSolution.jpg";
 
+// --- BACKGROUND COMPONENTS (Matches Hero Page) ---
+const ScanLine = () => (
+  <motion.div
+    initial={{ top: "-10%" }}
+    animate={{ top: "110%" }}
+    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+    className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#A29BFE] to-transparent z-0 opacity-50 shadow-[0_0_20px_#A29BFE]"
+  />
+);
+
+const TechRings = () => (
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[800px] md:h-[800px] pointer-events-none z-0 opacity-20 select-none">
+    {/* Ring 1: Dashed slow rotate */}
+    <motion.div
+      animate={{ rotate: 360 }}
+      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      className="absolute inset-0 rounded-full border border-dashed border-white/20"
+    />
+    {/* Ring 2: Reverse fast rotate */}
+    <motion.div
+      animate={{ rotate: -360 }}
+      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+      className="absolute inset-[15%] rounded-full border border-white/10 border-t-transparent border-b-transparent"
+    />
+    {/* Center Core Pulse */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="w-32 h-32 bg-[#A29BFE] rounded-full blur-[80px]"
+      />
+    </div>
+  </div>
+);
+
+// --- INFO CARD (Dark Theme Only) ---
 const InfoCard: React.FC<{
   icon: React.ReactNode;
   title: string;
   children: React.ReactNode;
 }> = ({ icon, title, children }) => (
-  <div className="bg-white/50 dark:bg-[#1E1E2F]/30 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 backdrop-blur-sm h-full">
+  // Removed bg-white/50 and light borders
+  <div className="bg-[#1E1E2F]/30 p-8 rounded-2xl border border-gray-800 backdrop-blur-sm h-full hover:border-[#3A2F5A]/50 transition-colors duration-300 relative z-10">
     <div className="flex items-center gap-4 mb-4">
-      <div className="bg-[#3A2F5A]/10 dark:bg-[#3A2F5A]/40 p-3 rounded-full text-[#3A2F5A] dark:text-white">
-        {icon}
-      </div>
-      <h3 className="text-2xl font-bold tracking-tight text-[#1A1A1A] dark:text-white">
-        {title}
-      </h3>
+      {/* Icon Background fixed to dark style */}
+      <div className="bg-[#3A2F5A]/40 p-3 rounded-full text-white">{icon}</div>
+      <h3 className="text-2xl font-bold tracking-tight text-white">{title}</h3>
     </div>
-    <p className="text-[#6B7280] dark:text-[#9CA3AF] leading-relaxed">
-      {children}
-    </p>
+    <p className="text-[#9CA3AF] leading-relaxed">{children}</p>
   </div>
 );
 
-// New Icon Placeholder for Collaboration (Using a simple SVG for two connected people/handshake concept)
+// --- HANDSHAKE ICON ---
 const HandshakeIcon: React.FC<{ className?: string }> = ({
   className = "w-7 h-7",
 }) => (
@@ -47,17 +80,26 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="py-20 sm:py-32 relative overflow-hidden bg-[#F9F9F9] dark:bg-[#121212]"
+      // Forced Deep Black Background
+      className="py-20 sm:py-32 relative overflow-hidden bg-[#050505]"
     >
-      <div className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 w-96 h-96 bg-[#3A2F5A]/5 dark:bg-[#3A2F5A]/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-96 h-96 bg-[#3A2F5A]/5 dark:bg-[#3A2F5A]/10 rounded-full blur-3xl -z-10"></div>
+      {/* --- LAYER 1: Background Grid & Texture (From Hero) --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Sci-fi Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(162,155,254,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(162,155,254,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        {/* Scanning Laser */}
+        <ScanLine />
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      {/* --- LAYER 2: Rotating Robotic Elements (From Hero) --- */}
+      <TechRings />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Understanding Aphasia, A New Approach
           </h2>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-[#6B7280] dark:text-[#9CA3AF]">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-[#9CA3AF]">
             Aphasia is a complex language disorder. We believe technology can
             offer a personalized path to recovery.
           </p>
@@ -66,11 +108,15 @@ const About: React.FC = () => {
         {/* Block 1: What is Aphasia? */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <AnimatedSection>
-            <img
-              src={aphasia_about}
-              alt="Person communicating"
-              className="rounded-xl shadow-2xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
-            />
+            <div className="relative group">
+              {/* Added a subtle glow effect behind the image */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <img
+                src={aphasia_about}
+                alt="Person communicating"
+                className="relative rounded-xl shadow-2xl w-full h-auto object-cover border border-gray-800"
+              />
+            </div>
           </AnimatedSection>
           <AnimatedSection>
             <InfoCard
@@ -89,11 +135,14 @@ const About: React.FC = () => {
         {/* Block 2: Our Robotic Solution */}
         <div className="grid md:grid-cols-2 gap-12 items-center mt-16 md:mt-24">
           <AnimatedSection className="md:order-2">
-            <img
-              src={robotSolution}
-              alt="Robot assisting patient"
-              className="rounded-xl shadow-2xl w-full h-  auto object-cover transition-transform duration-300 hover:scale-105"
-            />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <img
+                src={robotSolution}
+                alt="Robot assisting patient"
+                className="relative rounded-xl shadow-2xl w-full h-auto object-cover border border-gray-800"
+              />
+            </div>
           </AnimatedSection>
           <AnimatedSection className="md:order-1">
             <InfoCard
@@ -110,7 +159,7 @@ const About: React.FC = () => {
           </AnimatedSection>
         </div>
 
-        {/* Block 3: Collaboration and Partnership (NEW SECTION) */}
+        {/* Block 3: Collaboration and Partnership */}
         <AnimatedSection className="mt-16 md:mt-24">
           <InfoCard
             icon={<HandshakeIcon className="w-7 h-7" />}
@@ -123,7 +172,7 @@ const About: React.FC = () => {
               robotic therapy modules are clinically validated and align
               perfectly with established rehabilitation protocols.
             </p>
-            <p className="font-semibold text-[#1A1A1A] dark:text-white">
+            <p className="font-semibold text-white">
               Key Benefits for Clinics: Our platform provides therapists with
               detailed, objective data on patient progress outside of sessions,
               allowing for highly informed adjustments to the treatment plan and

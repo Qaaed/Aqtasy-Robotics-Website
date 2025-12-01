@@ -152,6 +152,6 @@ export const JOURNEY_DATA = [
     title: "Extra Feedback Sessions",
     description:
       "Commitment to Technical Excellence: Success required more than just a plan; it required mastery of our tools. Our group dedicated extra hours to specialized feedback sessions, using them as intensive learning opportunities. These sessions bridged the gap between theory and practice, allowing us to fully understand the capabilities of our chosen hardware and software, ensuring a seamless final product.",
-    images: [ brainstorming1, doneWfeedback, lateFeedback],
+    images: [brainstorming1, , lateFeedback],
   },
 ];
