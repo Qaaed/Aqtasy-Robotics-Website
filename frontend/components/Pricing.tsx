@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion"; // Import motion for animations
-import AnimatedSection from "./AnimatedSection";
+import { motion } from "framer-motion"; // Import motion for background animations
+// Removed AnimatedSection import
 
 // --- DATA: Single Pricing Plan ---
 const PRICING_PLAN = {
@@ -12,7 +12,7 @@ const PRICING_PLAN = {
     "Aqtasy Robot Device (Hardware)",
     "Lifetime App Access",
     "Advanced Whisper AI Analysis",
-    "Real-time Therapy Exercises",
+    "Real-time physical gestures",
     "Detailed Phoneme Reports",
     "24/7 Priority Support",
   ],
@@ -36,7 +36,7 @@ const CheckIcon = () => (
   </svg>
 );
 
-// --- BACKGROUND COMPONENTS (Matches Hero/Features Page) ---
+// --- BACKGROUND COMPONENTS (Matches Hero Page) ---
 const ScanLine = () => (
   <motion.div
     initial={{ top: "-10%" }}
@@ -75,6 +75,7 @@ const Pricing: React.FC = () => {
   return (
     <section
       id="pricing"
+      // Forced Deep Black Background
       className="py-20 sm:py-32 bg-[#050505] relative overflow-hidden"
     >
       {/* --- LAYER 1: Background Grid & Texture --- */}
@@ -91,7 +92,7 @@ const Pricing: React.FC = () => {
       {/* --- LAYER 3: Main Content --- */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* SECTION HEADER */}
-        <AnimatedSection className="text-center mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             One Simple Price
           </h2>
@@ -99,13 +100,13 @@ const Pricing: React.FC = () => {
             Everything you need to start your recovery journey, in one complete
             package.
           </p>
-        </AnimatedSection>
+        </div>
 
         {/* SINGLE PRICING CARD */}
-        <AnimatedSection>
+        <div>
           <div className="flex justify-center">
-            {/* Forced Dark Styles: Removed bg-white and light borders */}
-            <div className="relative flex flex-col p-8 md:p-10 rounded-3xl bg-[#22222A]/80 backdrop-blur-md border-2 border-purple-500 shadow-2xl w-full max-w-lg z-10 transition-transform hover:scale-[1.02] duration-300">
+            {/* Forced Dark Styles: Consistent with TechStack cards */}
+            <div className="relative flex flex-col p-8 md:p-10 rounded-3xl bg-[#1E1E2F]/60 backdrop-blur-md border-2 border-purple-500 shadow-2xl w-full max-w-lg z-10 transition-transform hover:scale-[1.02] duration-300">
               {/* Badge */}
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold uppercase tracking-wide px-6 py-2 rounded-full shadow-lg">
                 All-In-One Package
@@ -155,7 +156,7 @@ const Pricing: React.FC = () => {
               </p>
             </div>
           </div>
-        </AnimatedSection>
+        </div>
 
         {/* TRUST / SOCIAL PROOF */}
         <div className="mt-16 text-center">

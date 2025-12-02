@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
       // Use a timeout to allow the Home page to mount/render before finding the element
       setTimeout(() => {
         scrollToSection(href);
-      }, 100); // 100ms delay is usually enough
+      }, 300); // 300ms delay for page load
     }
   };
 
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-shadow duration-300 bg-[#18181B]/90 backdrop-blur-lg border-b border-gray-800 ${navClass}`}
+      className={`sticky top-0 z-50 bg-[#18181B]/90 backdrop-blur-lg border-b border-gray-800 ${navClass}`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
@@ -101,14 +101,14 @@ const Navbar: React.FC = () => {
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "#home")}
-              className="flex items-center space-x-2 text-[#3A2F5A] transition-transform duration-300 hover:scale-105"
+              // Updated: Added 'group' for hover effect, removed 'hover:opacity-80'
+              className="flex items-center space-x-2 text-[#3A2F5A] group"
             >
               <img
                 src={Logo}
                 alt="Logo"
-                // REMOVED: brightness-0 invert classes
-                // Keeping transition-all duration-300 for smooth hover effects if needed
-                className="h-40 w-40 object-contain transition-all duration-300"
+                // Updated: Added scale animation on group hover
+                className="h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-105"
                 draggable="false"
               />
             </a>
@@ -121,11 +121,8 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`px-3 lg:px-5 py-2.5 rounded-full text-sm lg:text-base font-semibold transition-all duration-300 ${
-                  activeLink === link.href && location.pathname === "/"
-                    ? "bg-white/10 text-white"
-                    : "text-[#9CA3AF] hover:bg-white/10 hover:text-white"
-                }`}
+                // PLAIN STYLE: Gray text, White on hover. No active color change.
+                className="px-3 lg:px-5 py-2.5 rounded-full text-sm lg:text-base font-semibold text-[#9CA3AF] hover:text-white"
               >
                 {link.name}
               </a>
@@ -136,7 +133,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-4">
             <a
               href="#"
-              className="bg-[#3A2F5A] text-white font-semibold px-4 py-2 rounded-lg shadow-sm hover:bg-opacity-90 transform hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
+              className="bg-[#3A2F5A] text-white font-semibold px-4 py-2 rounded-lg shadow-sm hover:bg-opacity-90 whitespace-nowrap"
             >
               Launch App
             </a>
@@ -170,11 +167,8 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`block px-3 py-2 rounded-md text-base font-semibold transition-colors duration-300 ${
-                activeLink === link.href && location.pathname === "/"
-                  ? "text-white bg-[#3A2F5A]"
-                  : "text-[#9CA3AF] hover:text-white hover:bg-gray-800"
-              }`}
+              // PLAIN STYLE (Mobile): Matches desktop
+              className="block px-3 py-2 rounded-md text-base font-semibold text-[#9CA3AF] hover:text-white"
             >
               {link.name}
             </a>
@@ -182,7 +176,7 @@ const Navbar: React.FC = () => {
           <div className="pt-2 px-1">
             <a
               href="#"
-              className="block w-full text-center bg-[#3A2F5A] text-white font-semibold py-2.5 rounded-md transition-colors duration-300 hover:bg-opacity-90"
+              className="block w-full text-center bg-[#3A2F5A] text-white font-semibold py-2.5 rounded-md hover:bg-opacity-90"
             >
               Launch App
             </a>

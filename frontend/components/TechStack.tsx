@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"; // Import motion for background animations
-import AnimatedSection from "./AnimatedSection";
 import { TECH_STACK_DATA } from "../constants";
 
 // --- BACKGROUND COMPONENTS (Matches Hero Page) ---
@@ -108,51 +107,49 @@ const TechStack: React.FC = () => {
 
       {/* --- CONTENT --- */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection className="text-center mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Our Technology Stack
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-[#9CA3AF]">
             Built with powerful and reliable technologies.
           </p>
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection>
-          {/* Toggle Switch */}
-          <div className="flex justify-center items-center gap-4 mb-12 p-1.5 bg-gray-900/80 border border-gray-800 rounded-full w-fit mx-auto backdrop-blur-sm">
-            <button
-              onClick={() => setActiveTab("software")}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeTab === "software"
-                  ? "bg-[#A29BFE] text-[#050505] shadow-[0_0_15px_rgba(162,155,254,0.4)]"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Software
-            </button>
-            <button
-              onClick={() => setActiveTab("hardware")}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeTab === "hardware"
-                  ? "bg-[#A29BFE] text-[#050505] shadow-[0_0_15px_rgba(162,155,254,0.4)]"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Hardware
-            </button>
-          </div>
+        {/* Toggle Switch */}
+        <div className="flex justify-center items-center gap-4 mb-12 p-1.5 bg-gray-900/80 border border-gray-800 rounded-full w-fit mx-auto backdrop-blur-sm">
+          <button
+            onClick={() => setActiveTab("software")}
+            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              activeTab === "software"
+                ? "bg-[#A29BFE] text-[#050505] shadow-[0_0_15px_rgba(162,155,254,0.4)]"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            Software
+          </button>
+          <button
+            onClick={() => setActiveTab("hardware")}
+            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              activeTab === "hardware"
+                ? "bg-[#A29BFE] text-[#050505] shadow-[0_0_15px_rgba(162,155,254,0.4)]"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            Hardware
+          </button>
+        </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
-            {combinedTech.map((tech) => (
-              <TechCard
-                key={tech.id}
-                softwareName={tech.software.name}
-                hardwareName={tech.hardware.name}
-                isFlipped={activeTab === "hardware"}
-              />
-            ))}
-          </div>
-        </AnimatedSection>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
+          {combinedTech.map((tech) => (
+            <TechCard
+              key={tech.id}
+              softwareName={tech.software.name}
+              hardwareName={tech.hardware.name}
+              isFlipped={activeTab === "hardware"}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

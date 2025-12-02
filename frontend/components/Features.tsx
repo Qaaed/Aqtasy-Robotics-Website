@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion"; // Import framer-motion for background animations
-import AnimatedSection from "./AnimatedSection";
 import { FEATURES_DATA } from "../constants";
 
 // --- CUSTOM ICONS (Forced Dark Theme Colors) ---
@@ -61,7 +60,7 @@ const ScanLine = () => (
     initial={{ top: "-10%" }}
     animate={{ top: "110%" }}
     transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-    className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#A29BFE] to-transparent z-0 opacity-50 shadow-[0_0_20px_#A29BFE]"
+    className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#A29BFE] to-transparent z-0 opacity-50 shadow-[0_0_20px_#A29BFE] pointer-events-none"
   />
 );
 
@@ -92,8 +91,8 @@ const TechRings = () => (
 
 // --- NEW COMPONENT: Emphasis Section (Forced Dark) ---
 const WhyDifferent: React.FC = () => (
-  <AnimatedSection className="mt-24 pt-10 border-t border-gray-800 relative">
-    {/* Additional Glow for Emphasis */}
+  <div className="mt-24 pt-10 border-t border-gray-800 relative">
+    {/* Background Glow Effect */}
     <div className="absolute top-20 left-0 w-72 h-72 bg-purple-900/20 rounded-full blur-3xl -z-10"></div>
 
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -183,7 +182,7 @@ const WhyDifferent: React.FC = () => (
         </div>
       </div>
     </div>
-  </AnimatedSection>
+  </div>
 );
 // --- END NEW COMPONENT ---
 
@@ -220,26 +219,25 @@ const Features: React.FC = () => {
       {/* --- LAYER 3: Main Content --- */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section 1: Main Features Grid */}
-        <AnimatedSection className="text-center mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Powerful Features
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-[#9CA3AF]">
             Everything you need for a successful recovery journey.
           </p>
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {FEATURES_DATA.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
-          </div>
-        </AnimatedSection>
+        {/* Grid Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {FEATURES_DATA.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
 
         {/* Section 2: The Differentiator */}
         <WhyDifferent />

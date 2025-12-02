@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"; // Import motion for background animations
-import AnimatedSection from "./AnimatedSection";
 import { TEAM_DATA } from "../constants";
 import { LinkedInIcon, GitHubIcon } from "./icons";
 
@@ -133,7 +132,7 @@ const Team: React.FC = () => {
 
       {/* --- LAYER 3: Main Content --- */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <AnimatedSection className="mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
             Meet the Team
           </h2>
@@ -141,16 +140,16 @@ const Team: React.FC = () => {
             The passionate minds working behind the scenes to make Aphasia
             recovery accessible to everyone.
           </p>
-        </AnimatedSection>
+        </div>
 
         {/* Restored Team Grid */}
-        <AnimatedSection>
+        <div>
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {TEAM_DATA.map((member, index) => (
               <TeamMemberCard key={index} {...member} />
             ))}
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </section>
   );
