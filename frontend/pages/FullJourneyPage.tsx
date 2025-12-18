@@ -66,7 +66,6 @@ const TechLogCard: React.FC<{
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-        // OPTIMIZATION: Tighter padding on mobile (pl-6) for more content space
         className="relative pl-6 md:pl-16 py-12 group"
       >
         {/* Timeline Node (The Dot) */}
@@ -100,7 +99,7 @@ const TechLogCard: React.FC<{
               <div className="flex flex-col gap-4">
                 {/* Main Preview Image */}
                 <div
-                  className="group/img relative w-full bg-gray-900/50 rounded-xl overflow-hidden border border-white/5 hover:border-[#A29BFE]/30 transition-colors cursor-zoom-in flex items-center justify-center min-h-[250px]"
+                  className="group/img relative w-full bg-gray-900/50 rounded-xl overflow-hidden border border-white/5 hover:border-[#A29BFE]/30 transition-colors cursor-zoom-in flex items-center justify-center p-1 md:p-2"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsExpanded(true);
@@ -113,7 +112,9 @@ const TechLogCard: React.FC<{
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
-                    className="w-auto h-auto max-w-full max-h-[500px] object-contain"
+                    // UPDATED: max-w-full and h-auto preserves aspect ratio.
+                    // max-h-[300px] prevents it from being too tall on mobile.
+                    className="max-w-full h-auto max-h-[300px] md:max-h-[500px] object-contain rounded-lg"
                   />
 
                   {/* Hover Overlay Hint */}
