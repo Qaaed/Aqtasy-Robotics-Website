@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { JOURNEY_DATA } from "../constants";
 
 // --- BACKGROUND COMPONENTS ---
@@ -62,44 +56,44 @@ const TechLogCard: React.FC<{
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 30 }} // Changed to vertical slide to prevent horizontal cutoff
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-        className="relative pl-6 md:pl-16 py-12 group"
+        transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+        className="relative pl-10 md:pl-16 py-12 group" // Adjusted padding for better alignment
       >
-        {/* Timeline Node (The Dot) */}
+        {/* The Node/Dot (Positioned relative to the card padding) */}
         <div className="absolute left-[3px] md:left-[11px] top-12 w-4 h-4 bg-[#050505] border-2 border-gray-700 rounded-full z-10 group-hover:border-[#A29BFE] group-hover:scale-125 transition-all duration-300">
           <div className="absolute inset-0 m-auto w-1.5 h-1.5 bg-[#A29BFE] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
 
-        {/* Card Content */}
-        <div className="relative">
-          {/* Header: Phase Number & Title */}
-          <div className="flex flex-col sm:flex-row sm:items-baseline gap-3 mb-6">
-            <span className="text-[#A29BFE] font-mono text-sm tracking-widest opacity-80">
-              0{index + 1}
+        {/* Card Container */}
+        <div className="bg-[#1E1E2F]/40 backdrop-blur-sm rounded-3xl border border-white/5 p-5 md:p-8 shadow-xl overflow-hidden">
+          {/* Header */}
+          <div className="mb-6">
+            <span className="inline-block py-1 px-3 rounded-md bg-purple-500/10 text-purple-300 text-xs font-mono font-bold tracking-widest uppercase mb-3 border border-purple-500/20">
+              // Section_0{index + 1}
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
               {phase.title}
             </h2>
           </div>
 
-          {/* Layout: Text & Images */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Text Description */}
-            <div className="prose prose-invert max-w-none">
+          {/* Content Layout: Stack on Mobile */}
+          <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8">
+            {/* Description */}
+            <div className="lg:col-span-2 prose prose-invert max-w-none">
               <p className="text-gray-400 text-lg leading-relaxed">
                 {phase.description}
               </p>
             </div>
 
-            {/* Image Gallery Area */}
+            {/* Image Gallery */}
             {phase.images.length > 0 && (
-              <div className="flex flex-col gap-4">
-                {/* Main Preview Image */}
+              <div className="lg:col-span-3 relative w-full">
+                {/* Image Container */}
                 <div
-                  className="group/img relative w-full bg-gray-900/50 rounded-xl overflow-hidden border border-white/5 hover:border-[#A29BFE]/30 transition-colors cursor-zoom-in flex items-center justify-center p-1 md:p-2"
+                  className="group/img relative w-full bg-gray-900/50 rounded-xl overflow-hidden border border-white/5 hover:border-[#A29BFE]/30 transition-colors cursor-zoom-in flex items-center justify-center min-h-[250px]"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsExpanded(true);
@@ -112,9 +106,8 @@ const TechLogCard: React.FC<{
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
-                    // UPDATED: max-w-full and h-auto preserves aspect ratio.
-                    // max-h-[300px] prevents it from being too tall on mobile.
-                    className="max-w-full h-auto max-h-[300px] md:max-h-[500px] object-contain rounded-lg"
+                    // Use w-full h-full object-contain to fit within the box without crop
+                    className="w-full h-full max-h-[300px] md:max-h-[500px] object-contain p-1"
                   />
 
                   {/* Hover Overlay Hint */}
@@ -125,9 +118,9 @@ const TechLogCard: React.FC<{
                   </div>
                 </div>
 
-                {/* Thumbnails (Scrollable Row - Mobile Friendly) */}
+                {/* Thumbnails */}
                 {phase.images.length > 1 && (
-                  <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide mask-fade-right touch-pan-x">
+                  <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide mask-fade-right touch-pan-x mt-4">
                     {phase.images.map((img, idx) => (
                       <button
                         key={idx}
@@ -179,7 +172,7 @@ const TechLogCard: React.FC<{
                   onClick={(e) => e.stopPropagation()}
                 />
 
-                {/* Navigation Arrows (Big tap targets for mobile) */}
+                {/* Navigation Arrows */}
                 {phase.images.length > 1 && (
                   <div className="absolute bottom-[-3rem] left-0 right-0 flex justify-center gap-6">
                     <button
