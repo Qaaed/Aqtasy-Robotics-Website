@@ -5,15 +5,14 @@ import { motion } from "framer-motion"; // Import motion for background animatio
 // --- DATA: Single Pricing Plan ---
 const PRICING_PLAN = {
   title: "Aqtasy Robot Kit",
-  price: "$199",
+  price: "TBD",
   period: "one-time",
   description: "The complete speech therapy companion for home recovery.",
   features: [
     "Aqtasy Robot Device (Hardware)",
     "Lifetime App Access",
     "Advanced Whisper AI Analysis",
-    "Real-time physical gestures",
-    "Detailed Phoneme Reports",
+    "Detailed Recovery Reports",
     "24/7 Priority Support",
   ],
   buttonText: "Order Now",

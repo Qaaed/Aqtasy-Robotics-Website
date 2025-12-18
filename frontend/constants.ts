@@ -1,26 +1,27 @@
 //Initial Start of the Project
-import first_meeting from "./assets/Meeting_Images/first_meeting.jpg";
-import robot_designs from "./assets/Meeting_Images/robot_designs.jpg";
-import black_day from "./assets/Meeting_Images/black__day.jpg";
-import beforeFeedback from "./assets/Meeting_Images/beforeFeedback.jpg";
+import first_meeting from "./assets/Meeting_Images/initial_start/first_meeting.jpg";
+import robot_designs from "./assets/Meeting_Images/initial_start/robot_designs.jpg";
+import black_day from "./assets/Meeting_Images/initial_start/black__day.jpg";
+import beforeFeedback from "./assets/Meeting_Images/initial_start/beforeFeedback.jpg";
 
 //Meeting with Speech Therapist
-import SpeechTherapist from "./assets/Meeting_Images/SpeechTherapist.jpg";
-import taahir_aabid from "./assets/Meeting_Images/taahir_aabid.jpg";
+import therapist from "./assets/Meeting_Images/Buddhima_Meet/therapist1_meeting.jpg";
+import therapist_macbook from "./assets/Meeting_Images/Buddhima_Meet/therapist_macbook.jpg";
+import therapist2 from "./assets/Meeting_Images/Buddhima_Meet/therapist2.jpg";
 
 //website design images
-import website_design1 from "./assets/Meeting_Images/website_design1.jpg";
-import website_design2 from "./assets/Meeting_Images/website_design2.jpg";
-import website_design3 from "./assets/Meeting_Images/website_design3.jpg";
+import website_design1 from "./assets/Meeting_Images/website_design/website_design1.jpg";
+import website_design2 from "./assets/Meeting_Images//website_design/website_design2.jpg";
+import website_design3 from "./assets/Meeting_Images/website_design/website_design3.jpg";
 
-//submission
-import lateFeedback from "./assets/Meeting_Images/lateFeedback.jpg";
-import brainstorming1 from "./assets/Meeting_Images/brainstorming1.jpg";
-import doneWfeedback from "./assets/Meeting_Images/doneWfeedback.jpg";
+//Vertex meeting
+import vertex_kyan1 from "./assets/Meeting_Images/Vertex_Meet/Kyan/fullteampic.jpg";
+import vertex_kyan2 from "./assets/Meeting_Images/Vertex_Meet/Kyan/kyabot.jpg";
+import vertex_kyan3 from "./assets/Meeting_Images/Vertex_Meet/Kyan/botwork.jpg";
 
 //profile pictures for team card
 import qaaed_pic from "./assets/Group_Members/Qaaed2.jpeg";
-import aabid_pic from "./assets/Group_Members/Aabid.jpeg";
+import aabid_pic from "./assets/Group_Members/Aabid.jpg";
 import yousuf_pic from "./assets/Group_Members/Yousuf2.jpg";
 import sahetyan_pic from "./assets/Group_Members/sahetyan.jpg";
 import taahir_pic from "./assets/Group_Members/Taahir.jpg";
@@ -140,7 +141,7 @@ export const JOURNEY_DATA = [
     title: "Meeting with Speech Therapist",
     description:
       "After the team finalized the idea for the robot, we proceeded to collaborate with a certified speech therapist, Ms. Buddhima Samaraweera. She played a crucial role in shaping the concept by providing her expert insights into the challenges faced by individuals with speech difficulties. Through discussions and brainstorming sessions with her, she helped us understand the practical needs of users and suggested innovative features that would make the robot more effective in assisting adults with aphasia. Her guidance was instrumental in refining our initial concept, turning it into a feasible and impactful solution.",
-    images: [SpeechTherapist, taahir_aabid],
+    images: [therapist, therapist2, therapist_macbook],
   },
   {
     title: "Construction of the Marketing website",
@@ -149,9 +150,9 @@ export const JOURNEY_DATA = [
     images: [website_design1, website_design2, website_design3],
   },
   {
-    title: "Extra Feedback Sessions",
+    title: "Meeting with Team Kyan",
     description:
-      "Commitment to Technical Excellence: Success required more than just a plan; it required mastery of our tools. Our group dedicated extra hours to specialized feedback sessions, using them as intensive learning opportunities. These sessions bridged the gap between theory and practice, allowing us to fully understand the capabilities of our chosen hardware and software, ensuring a seamless final product.",
-    images: [brainstorming1, , lateFeedback],
+      "Our team, Aqtasy Robotics, met with Team RASPBerry at Vertex 25, and it was a very informative experience. We observed a live demonstration of their robot and discussed how it works, along with the challenges they faced during development. They shared issues such as hardware limitations and latency affecting the robot’s responsiveness. This discussion helped us gain valuable insights and ideas that we can apply to improve our own project.",
+    images: [vertex_kyan1, , vertex_kyan2, vertex_kyan3],
   },
 ];
