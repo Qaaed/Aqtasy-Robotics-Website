@@ -1,153 +1,207 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import { JOURNEY_DATA } from "../constants";
 
-// --- SUB-COMPONENT: Tech Log Card ---
+// --- BACKGROUND COMPONENTS ---
+const ScanLine = () => (
+  <motion.div
+    initial={{ top: "-10%" }}
+    animate={{ top: "110%" }}
+    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+    className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#A29BFE]/50 to-transparent z-0 pointer-events-none"
+  />
+);
+
+const TechRings = () => (
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[800px] md:h-[800px] pointer-events-none z-0 opacity-20 select-none">
+    <motion.div
+      animate={{ rotate: 360 }}
+      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      className="absolute inset-0 rounded-full border border-dashed border-white/20"
+    />
+    <motion.div
+      animate={{ rotate: -360 }}
+      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+      className="absolute inset-[15%] rounded-full border border-white/10 border-t-transparent border-b-transparent"
+    />
+  </div>
+);
+
+// --- COMPONENT: TECH LOG CARD ---
 const TechLogCard: React.FC<{
   phase: { title: string; description: string; images: string[] };
   index: number;
 }> = ({ phase, index }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeImgIdx, setActiveImgIdx] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setActiveImgIdx((prev) =>
+      prev === phase.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setActiveImgIdx((prev) =>
+      prev === 0 ? phase.images.length - 1 : prev - 1
+    );
+  };
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        // OPTIMIZATION: Reduced pl-8 to pl-6 on mobile for more space
-        className="relative pl-6 md:pl-12 py-8 group"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
+        // OPTIMIZATION: Tighter padding on mobile (pl-6) for more content space
+        className="relative pl-6 md:pl-16 py-12 group"
       >
-        {/* The Vertical Line (Left Side) */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-white/10 group-last:bottom-auto group-last:h-12"></div>
+        {/* Timeline Node (The Dot) */}
+        <div className="absolute left-[3px] md:left-[11px] top-12 w-4 h-4 bg-[#050505] border-2 border-gray-700 rounded-full z-10 group-hover:border-[#A29BFE] group-hover:scale-125 transition-all duration-300">
+          <div className="absolute inset-0 m-auto w-1.5 h-1.5 bg-[#A29BFE] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </div>
 
-        {/* The Node/Dot */}
-        <div className="absolute left-[-5px] top-12 w-3 h-3 rounded-full bg-purple-500 ring-4 ring-[#050505] z-10 shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-transform duration-300 group-hover:scale-125"></div>
+        {/* Card Content */}
+        <div className="relative">
+          {/* Header: Phase Number & Title */}
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-3 mb-6">
+            <span className="text-[#A29BFE] font-mono text-sm tracking-widest opacity-80">
+              0{index + 1}
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              {phase.title}
+            </h2>
+          </div>
 
-        {/* Card Container */}
-        {/* OPTIMIZATION: Reduced p-6 to p-5 on mobile */}
-        <div className="bg-[#1E1E2F]/40 backdrop-blur-sm rounded-3xl border border-white/5 p-5 md:p-8 shadow-xl hover:border-purple-500/30 transition-all duration-500">
-          <div>
-            {/* Header */}
-            <div className="mb-6">
-              <span className="inline-block py-1 px-3 rounded-md bg-purple-500/10 text-purple-300 text-xs font-mono font-bold tracking-widest uppercase mb-3 border border-purple-500/20">
-                // Section 0{index + 1}
-              </span>
-              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                {phase.title}
-              </h2>
+          {/* Layout: Text & Images */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Text Description */}
+            <div className="prose prose-invert max-w-none">
+              <p className="text-gray-400 text-lg leading-relaxed">
+                {phase.description}
+              </p>
             </div>
 
-            {/* Content Layout */}
-            <div className="grid lg:grid-cols-5 gap-8">
-              {/* Left: Description */}
-              <div className="lg:col-span-2 prose prose-invert max-w-none">
-                <p className="text-gray-400 leading-relaxed text-lg">
-                  {phase.description}
-                </p>
-              </div>
+            {/* Image Gallery Area */}
+            {phase.images.length > 0 && (
+              <div className="flex flex-col gap-4">
+                {/* Main Preview Image */}
+                <div
+                  className="group/img relative w-full bg-gray-900/50 rounded-xl overflow-hidden border border-white/5 hover:border-[#A29BFE]/30 transition-colors cursor-zoom-in flex items-center justify-center min-h-[250px]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsExpanded(true);
+                  }}
+                >
+                  <motion.img
+                    key={activeImgIdx}
+                    src={phase.images[activeImgIdx]}
+                    alt={phase.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-auto h-auto max-w-full max-h-[500px] object-contain"
+                  />
 
-              {/* Right: Image Gallery */}
-              {phase.images.length > 0 && (
-                <div className="lg:col-span-3 flex flex-col gap-4">
-                  {/* Inline Image Display (Dynamic Aspect Ratio) */}
-                  <div
-                    className="relative rounded-2xl overflow-hidden bg-black/50 border border-white/10 shadow-inner cursor-zoom-in group/image flex items-center justify-center min-h-[250px] md:min-h-[300px]"
-                    onClick={() => setIsExpanded(true)}
-                  >
-                    <motion.img
-                      src={phase.images[currentImageIndex]}
-                      alt={`${phase.title} - View ${currentImageIndex + 1}`}
-                      className="w-auto h-auto max-w-full max-h-[400px] md:max-h-[500px] object-contain transition-transform duration-500 group-hover/image:scale-[1.02]"
-                    />
-
-                    {/* Expand Button */}
-                    <div className="absolute bottom-3 right-3 bg-black/60 px-3 py-1.5 rounded-lg text-xs font-bold text-white backdrop-blur-md border border-white/10 flex items-center gap-2 transition-opacity duration-300 opacity-0 group-hover/image:opacity-100 md:opacity-0 md:group-hover/image:opacity-100 opacity-100">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                        />
-                      </svg>
-                      <span className="hidden sm:inline">Tap to Expand</span>
-                    </div>
+                  {/* Hover Overlay Hint */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-xs font-bold text-white border border-white/10">
+                      Click to Expand
+                    </span>
                   </div>
-
-                  {/* Thumbnails */}
-                  {phase.images.length > 1 && (
-                    <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide pt-2 touch-pan-x">
-                      {phase.images.map((imgSrc, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentImageIndex(idx)}
-                          className={`relative flex-shrink-0 w-20 h-14 md:w-24 md:h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                            idx === currentImageIndex
-                              ? "border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.3)] opacity-100 scale-105"
-                              : "border-transparent opacity-50 hover:opacity-100 hover:border-gray-700"
-                          }`}
-                        >
-                          <img
-                            src={imgSrc}
-                            alt={`Thumbnail ${idx + 1}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </div>
-              )}
-            </div>
+
+                {/* Thumbnails (Scrollable Row - Mobile Friendly) */}
+                {phase.images.length > 1 && (
+                  <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide mask-fade-right touch-pan-x">
+                    {phase.images.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          setActiveImgIdx(idx);
+                        }}
+                        className={`relative flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border transition-all ${
+                          idx === activeImgIdx
+                            ? "border-[#A29BFE] opacity-100"
+                            : "border-transparent opacity-50 hover:opacity-100"
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt=""
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </motion.div>
 
-      {/* --- EXPANDED MODAL (PORTAL) --- */}
+      {/* --- EXPANDED MODAL --- */}
       {isExpanded &&
         createPortal(
           <AnimatePresence>
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="absolute inset-0 bg-black/95 backdrop-blur-xl"
-                onClick={() => setIsExpanded(false)}
-              />
-
-              {/* Scale-Up Card Container (Snappier Animation) */}
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                className="relative w-auto h-auto max-w-[95vw] max-h-[90vh] flex items-center justify-center z-10"
-                onClick={(e) => e.stopPropagation()}
-              >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsExpanded(false);
+              }}
+            >
+              <div className="relative w-full max-w-7xl max-h-[90vh] flex items-center justify-center">
                 <img
-                  src={phase.images[currentImageIndex]}
-                  alt="Expanded View"
-                  className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-purple-500/30"
+                  src={phase.images[activeImgIdx]}
+                  alt="Expanded"
+                  className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg"
+                  onClick={(e) => e.stopPropagation()}
                 />
 
-                {/* Close Button */}
+                {/* Navigation Arrows (Big tap targets for mobile) */}
+                {phase.images.length > 1 && (
+                  <div className="absolute bottom-[-3rem] left-0 right-0 flex justify-center gap-6">
+                    <button
+                      onClick={prevImage}
+                      className="p-4 bg-white/10 hover:bg-[#A29BFE] rounded-full text-white transition-colors"
+                    >
+                      ←
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="p-4 bg-white/10 hover:bg-[#A29BFE] rounded-full text-white transition-colors"
+                    >
+                      →
+                    </button>
+                  </div>
+                )}
+
                 <button
-                  onClick={() => setIsExpanded(false)}
-                  className="absolute top-4 right-4 p-3 bg-black/50 text-white rounded-full hover:bg-red-500 hover:scale-110 transition-all border border-white/10"
+                  className="absolute top-4 right-4 p-3 bg-black/50 text-white rounded-full hover:bg-red-500/80"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsExpanded(false);
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -164,8 +218,8 @@ const TechLogCard: React.FC<{
                     />
                   </svg>
                 </button>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </AnimatePresence>,
           document.body
         )}
@@ -175,24 +229,40 @@ const TechLogCard: React.FC<{
 
 // --- MAIN PAGE COMPONENT ---
 const FullJourneyPage: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050505] pt-32 pb-20 overflow-x-hidden">
+    <div className="min-h-screen bg-[#050505] pt-32 pb-20 overflow-x-hidden relative">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-purple-900/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-900/10 rounded-full blur-[120px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <ScanLine />
+        <TechRings />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
-        {/* Header Section */}
-        <div className="mb-20">
+      <div
+        className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10"
+        ref={containerRef}
+      >
+        {/* Header */}
+        <div className="mb-24">
           <Link
             to="/"
-            className="inline-flex items-center text-gray-400 hover:text-purple-400 font-medium mb-8 transition-colors group px-4 py-2 rounded-lg hover:bg-white/5"
+            className="inline-flex items-center text-gray-400 hover:text-[#A29BFE] font-medium mb-8 transition-colors group px-4 py-2 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/10"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -212,34 +282,45 @@ const FullJourneyPage: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
               Development{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A29BFE] to-indigo-500">
                 Log
               </span>
             </h1>
-            <p className="max-w-2xl text-xl text-gray-400 leading-relaxed">
-              Tracking the evolution of Aqtasy Robotics from initial sketches to
-              a fully realized autonomous companion.
+            <p className="max-w-2xl text-xl text-gray-400 leading-relaxed border-l-4 border-[#A29BFE]/50 pl-6">
+              Tracking the evolution of Aqtasy Robotics from concept to reality.
             </p>
           </motion.div>
         </div>
 
-        {/* The Timeline List */}
-        <div className="relative md:ml-4">
-          {JOURNEY_DATA.map((phase, index) => (
-            <TechLogCard key={index} phase={phase} index={index} />
-          ))}
-        </div>
+        {/* Timeline Container */}
+        <div className="relative">
+          {/* The Main Vertical Line (Gray Background) */}
+          <div className="absolute left-[10px] md:left-[18px] top-0 bottom-0 w-[2px] bg-gray-800"></div>
 
-        {/* Bottom "End of Log" Marker */}
-        <div className="flex items-center gap-4 text-gray-600 pl-12 mt-8">
-          <div className="w-2 h-2 rounded-full bg-gray-700"></div>
-          <span className="text-sm font-mono uppercase tracking-widest">
-            End of current logs
-          </span>
+          {/* The Glowing Fill Line (Purple Foreground) */}
+          <motion.div
+            className="absolute left-[10px] md:left-[18px] top-0 w-[2px] bg-gradient-to-b from-[#A29BFE] to-indigo-500 origin-top"
+            style={{ scaleY, height: "100%" }}
+          />
+
+          {/* List of Cards */}
+          <div className="space-y-4">
+            {JOURNEY_DATA.map((phase, index) => (
+              <TechLogCard key={index} phase={phase} index={index} />
+            ))}
+          </div>
+
+          {/* End Marker */}
+          <div className="relative pl-8 md:pl-16 pt-8 flex items-center gap-3 opacity-50">
+            <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
+            <span className="text-xs font-mono uppercase tracking-widest text-gray-500">
+              End of Log
+            </span>
+          </div>
         </div>
       </div>
     </div>

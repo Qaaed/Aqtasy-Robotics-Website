@@ -134,7 +134,7 @@ export const JOURNEY_DATA = [
   {
     title: "Initial Start of the Project",
     description:
-      "Brainstorming ideas related to robotics, we explored various approaches to address the problem and worked on conceptualizing an effective solution. This process included sketching preliminary designs, discussing potential functionalities, and gradually shaping the overall design of the robot.",
+      "Our team members met for the first time to brainstorm robotics-related ideas, where we discussed possible solutions, sketched initial designs, and explored potential functionalities. Although we initially had our own project idea, our supervisor, Mr. Sanjula Samarasekara, suggested developing a robot to assist children who stutter, which led us to explore assistive robotics in healthcare. After consulting a speech therapist, we learned that this approach could result in overcorrection and frustration for children, making it less effective. She instead suggested focusing on aphasia, and after a few days of research into the condition and existing therapies, we refined our concept and finalized our project idea around this focus.",
     images: [first_meeting, black_day, robot_designs, beforeFeedback],
   },
   {
