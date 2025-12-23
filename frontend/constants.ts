@@ -24,7 +24,7 @@ import qaaed_pic from "./assets/Group_Members/Qaaed2.jpeg";
 import aabid_pic from "./assets/Group_Members/Aabid.jpg";
 import yousuf_pic from "./assets/Group_Members/Yousuf2.jpg";
 import sahetyan_pic from "./assets/Group_Members/sahetyan.jpg";
-import taahir_pic from "./assets/Group_Members/Taahir.jpg";
+import taahir_pic from "./assets/Group_Members/Taahir.jpeg";
 import ackash_pic from "./assets/Group_Members/Ackaash.jpg";
 
 export const NAV_LINKS = [
