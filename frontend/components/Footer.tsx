@@ -60,8 +60,7 @@ const Footer: React.FC = () => {
                 <img
                   src={Logo}
                   alt="Aqtasy Robotics Logo"
-                  // Added hover animation & removed color filters to match Navbar
-                  className="w-24 h-24 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-[57px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
             </div>

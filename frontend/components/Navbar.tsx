@@ -101,14 +101,12 @@ const Navbar: React.FC = () => {
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "#home")}
-              // Updated: Added 'group' for hover effect, removed 'hover:opacity-80'
               className="flex items-center space-x-2 text-[#3A2F5A] group"
             >
               <img
                 src={Logo}
                 alt="Logo"
-                // Updated: Added scale animation on group hover
-                className="h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-[50px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 draggable="false"
               />
             </a>
@@ -121,7 +119,6 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                // PLAIN STYLE: Gray text, White on hover. No active color change.
                 className="px-3 lg:px-5 py-2.5 rounded-full text-sm lg:text-base font-semibold text-[#9CA3AF] hover:text-white"
               >
                 {link.name}
@@ -167,7 +164,6 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              // PLAIN STYLE (Mobile): Matches desktop
               className="block px-3 py-2 rounded-md text-base font-semibold text-[#9CA3AF] hover:text-white"
             >
               {link.name}
