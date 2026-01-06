@@ -14,10 +14,14 @@ import website_design1 from "./assets/Meeting_Images/website_design/website_desi
 import website_design2 from "./assets/Meeting_Images//website_design/website_design2.jpg";
 import website_design3 from "./assets/Meeting_Images/website_design/website_design3.jpg";
 
-//Vertex meeting
-import vertex_kyan1 from "./assets/Meeting_Images/Vertex_Meet/Kyan/fullteampic.jpg";
-import vertex_kyan2 from "./assets/Meeting_Images/Vertex_Meet/Kyan/kyabot.jpg";
-import vertex_kyan3 from "./assets/Meeting_Images/Vertex_Meet/Kyan/botwork.jpg";
+//sdgp teams meeting
+import kyan1 from "./assets/Meeting_Images/Vertex_Meet/Kyan/fullteampic.jpg";
+import kyan2 from "./assets/Meeting_Images/Vertex_Meet/Kyan/kyabot.jpg";
+import kyan3 from "./assets/Meeting_Images/Vertex_Meet/Kyan/botwork.jpg";
+import kyan4 from "./assets/Meeting_Images/Vertex_Meet/Kyan/kyan_meet.jpg";
+
+import novalith1 from "./assets/Meeting_Images/Vertex_Meet/Novalith/meeting_chalindu.jpg";
+import novalith2 from "./assets/Meeting_Images/Vertex_Meet/Novalith/vertext_chalindu.jpg";
 
 //profile pictures for team card
 import qaaed_pic from "./assets/Group_Members/Qaaed2.jpeg";
@@ -150,9 +154,15 @@ export const JOURNEY_DATA = [
     images: [website_design1, website_design2, website_design3],
   },
   {
-    title: "Meeting with Team Kyan",
+    title: "Meeting with Team_RASPBerry",
     description:
-      "Our team, Aqtasy Robotics, met with Team RASPBerry at Vertex 25, and it was a very informative experience. We observed a live demonstration of their robot and discussed how it works, along with the challenges they faced during development. They shared issues such as hardware limitations and latency affecting the robot’s responsiveness. This discussion helped us gain valuable insights and ideas that we can apply to improve our own project.",
-    images: [vertex_kyan1, , vertex_kyan2, vertex_kyan3],
+      "Our team, Aqtasy Robotics, first had a Google Meet session with the full team of Team RASPBerry, where we discussed our project approach and exchanged ideas. Later, we met them in person at Vertex 25, which was a very informative experience. We observed a live demonstration of their robot and discussed how it works, along with the challenges they faced during development. They shared issues such as hardware limitations and latency affecting the robot’s responsiveness. These interactions provided us with valuable insights that we can apply to improve our own project.",
+    images: [kyan1, , kyan2, kyan3, kyan4],
+  },
+  {
+    title: "Meeting with Mr. Chalindu Yohan (Novalith Founder)",
+    description:
+      "An in-depth discussion was held with Chalindu Yohan, the founder of Team Novalith, whom we met at Vertex, where he also demonstrated his project in person. He explained the core concepts and development approach behind his work, sharing valuable insights gained from his experience, including key technical decisions and lessons learned. During the interaction, he introduced the idea of implementing AI agents to enhance system intelligence and automation, which inspired new directions for improving the overall project approach.",
+    images: [novalith1, novalith2],
   },
 ];
