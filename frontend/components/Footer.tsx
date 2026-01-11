@@ -73,13 +73,15 @@ const Footer: React.FC = () => {
             {/* Social Icons */}
             <div className="flex items-center space-x-5 pt-1">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/aqtasy-robotics/"
+                target="_blank"
                 className="text-gray-400 hover:text-[#A29BFE] transition-transform hover:scale-110"
               >
                 <LinkedInIcon className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/aqtasy_robotics/"
+                target="_blank"
                 className="text-gray-400 hover:text-[#A29BFE] transition-transform hover:scale-110"
               >
                 <InstagramIcon className="w-5 h-5" />
