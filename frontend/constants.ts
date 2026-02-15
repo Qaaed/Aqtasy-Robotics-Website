@@ -24,12 +24,20 @@ import novalith1 from "./assets/Meeting_Images/Vertex_Meet/Novalith/meeting_chal
 import novalith2 from "./assets/Meeting_Images/Vertex_Meet/Novalith/vertext_chalindu.jpg";
 
 //profile pictures for team card
-import qaaed_pic from "./assets/Group_Members/Qaaed2.jpeg";
+import qaaed_pic from "./assets/Group_Members/Qaaed2.jpg";
 import aabid_pic from "./assets/Group_Members/Aabid.jpg";
 import yousuf_pic from "./assets/Group_Members/Yousuf2.jpg";
 import sahetyan_pic from "./assets/Group_Members/sahetyan.jpg";
 import taahir_pic from "./assets/Group_Members/Taahir.jpeg";
 import ackash_pic from "./assets/Group_Members/Ackaash.jpg";
+
+//initial robo design pictures
+import robo_1 from "./assets/Meeting_Images/initial_robot_design/robo_1.jpeg"
+import robo_2 from "./assets/Meeting_Images/initial_robot_design/robo_2.jpeg"
+import robo_3 from "./assets/Meeting_Images/initial_robot_design/robo_everyone.jpeg"
+import robo_4 from "./assets/Meeting_Images/initial_robot_design/printer_frame_body.jpeg"
+import robo_5 from "./assets/Meeting_Images/initial_robot_design/printer_base.jpeg"
+import robo_6 from "./assets/Meeting_Images/initial_robot_design/printer_body.jpeg"
 
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -74,16 +82,16 @@ export const TECH_STACK_DATA = {
   hardware: [
     { name: "Raspberry Pi 4" },
     { name: "Camera module" },
-    { name: "High-Res 7inch Touch Display" },
+    { name: "7 inch Touch Display" },
     { name: "Servo Motors" },
     { name: "3D Printed Custom Enclosure" },
-    { name: "USB Microphone" },
+    { name: "USB Microphone and built in Speakers" },
   ],
   software: [
-    { name: "Whisper" },
-    { name: "Firebase" },
+    { name: "Whisper API " },
+    { name: "Supabase" },
     { name: "TensorFlow" },
-    { name: "PostgreSQL" },
+    { name: "Recharts" },
     { name: "Fast API " },
     { name: "Azure AI Services" },
   ],
@@ -164,5 +172,11 @@ export const JOURNEY_DATA = [
     description:
       "An in-depth discussion was held with Chalindu Yohan, the founder of Team Novalith, whom we met at Vertex, where he also demonstrated his project in person. He explained the core concepts and development approach behind his work, sharing valuable insights gained from his experience, including key technical decisions and lessons learned. During the interaction, he introduced the idea of implementing AI agents to enhance system intelligence and automation, which inspired new directions for improving the overall project approach.",
     images: [novalith1, novalith2],
+  },
+{
+    title: "Initial Robot Design",
+    description:
+      "For our physical prototype, we designed a custom 3D-printed enclosure to securely house the Raspberry Pi and sensor array. Leveraging internal resources, our team member Sahetyan utilized his personal 3D printer for the fabrication, allowing us to significantly reduce costs by purchasing only the filament. This strategic division of labor allowed Sahetyan to spearhead the hardware engineering and mechanical assembly, while the rest of the team dedicated their efforts to developing the sophisticated Machine Learning models and software architecture.",
+    images: [robo_1, robo_2, robo_3, robo_4, robo_5, robo_6],
   },
 ];

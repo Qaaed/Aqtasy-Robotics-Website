@@ -149,10 +149,7 @@ const Pricing: React.FC = () => {
                 {PRICING_PLAN.buttonText}
               </a>
 
-              <p className="text-center text-xs text-gray-400 mt-6">
-                *Includes 1-year hardware warranty and 30-day money-back
-                guarantee.
-              </p>
+  
             </div>
           </div>
         </div>
@@ -160,7 +157,7 @@ const Pricing: React.FC = () => {
         {/* TRUST / SOCIAL PROOF */}
         <div className="mt-16 text-center">
           <p className="text-sm text-gray-400 mb-4">
-            Approved by speech therapists.
+            *Working with Speech Therapists for Optimal Performance*
           </p>
         </div>
       </div>
