@@ -11,6 +11,53 @@ const ScanLine = () => (
   />
 );
 
+// --- COMPONENT: Cute Floating Companion Orb (Waabi) ---
+const CuteOrb = () => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{
+      opacity: 1,
+      scale: 1,
+      y: [0, -20, 0],
+      rotate: [0, 5, -5, 0],
+    }}
+    transition={{
+      y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+      rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+      opacity: { duration: 1, delay: 0.5 },
+      scale: { duration: 1, delay: 0.5, type: "spring" },
+    }}
+    className="absolute hidden md:flex top-32 right-[10%] lg:right-[15%] w-20 h-20 bg-gradient-to-br from-[#A29BFE] to-indigo-500 rounded-full shadow-[0_0_40px_rgba(162,155,254,0.6)] items-center justify-center z-20 overflow-hidden"
+  >
+    {/* Inner glass reflection */}
+    <div className="absolute inset-1 bg-white/20 rounded-full backdrop-blur-md"></div>
+
+    {/* Cute Blinking Eyes */}
+    <div className="relative flex gap-3 mb-2 z-10">
+      <motion.div
+        animate={{ scaleY: [1, 0.1, 1, 1, 1] }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          times: [0, 0.05, 0.1, 0.5, 1],
+          ease: "easeInOut",
+        }}
+        className="w-2.5 h-4 bg-white rounded-full shadow-[0_0_10px_white]"
+      />
+      <motion.div
+        animate={{ scaleY: [1, 0.1, 1, 1, 1] }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          times: [0, 0.05, 0.1, 0.5, 1],
+          ease: "easeInOut",
+        }}
+        className="w-2.5 h-4 bg-white rounded-full shadow-[0_0_10px_white]"
+      />
+    </div>
+  </motion.div>
+);
+
 // --- COMPONENT: Rotating Tech Rings (Background) ---
 const TechRings = () => (
   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[800px] md:h-[800px] pointer-events-none z-0 opacity-20 select-none">
@@ -67,6 +114,9 @@ const Hero: React.FC = () => {
       {/* --- LAYER 2: Rotating Robotic Elements --- */}
       <TechRings />
 
+      {/* --- LAYER 2.5: Cute AI Companion --- */}
+      <CuteOrb />
+
       {/* --- LAYER 3: Main Content (The Glass Cockpit) --- */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Removed scroll-linked opacity/scale. Added simple entry animation. */}
@@ -117,7 +167,7 @@ const Hero: React.FC = () => {
             {/* Buttons */}
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5">
               <a
-                href="#"
+                href="https://aphasiaaqtasy.netlify.app/login"
                 className="w-full sm:w-auto relative group overflow-hidden rounded-lg bg-[#A29BFE] px-8 py-4 font-bold text-white transition-all duration-300 hover:bg-[#8c85fa] hover:shadow-[0_0_30px_rgba(162,155,254,0.4)]"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent z-10" />

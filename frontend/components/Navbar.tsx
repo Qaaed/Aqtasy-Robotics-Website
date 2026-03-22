@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
     e.preventDefault();
 
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       const sections = NAV_LINKS.map((link) =>
-        document.querySelector(link.href)
+        document.querySelector(link.href),
       );
       let current = "";
       sections.forEach((section) => {
@@ -129,7 +129,9 @@ const Navbar: React.FC = () => {
           {/* RIGHT: Actions (Launch App) */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="#"
+              href="https://aphasiaaqtasy.netlify.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#3A2F5A] text-white font-semibold px-4 py-2 rounded-lg shadow-sm hover:bg-opacity-90 whitespace-nowrap"
             >
               Launch App
@@ -171,7 +173,9 @@ const Navbar: React.FC = () => {
           ))}
           <div className="pt-2 px-1">
             <a
-              href="#"
+              href="https://aphasiaaqtasy.netlify.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center bg-[#3A2F5A] text-white font-semibold py-2.5 rounded-md hover:bg-opacity-90"
             >
               Launch App
