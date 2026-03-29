@@ -10,10 +10,11 @@ const PRICING_PLAN = {
   description: "The complete speech therapy companion for home recovery.",
   features: [
     "Aqtasy Robot Device (Hardware)",
+    "Exportable CSV Clinical Data",
+    "Personalized Daily Therapy Sessions",
     "Lifetime App Access",
     "Advanced Whisper AI Analysis",
     "Detailed Recovery Reports",
-    "24/7 Priority Support",
   ],
   buttonText: "Order Now",
 };
@@ -148,8 +149,6 @@ const Pricing: React.FC = () => {
               >
                 {PRICING_PLAN.buttonText}
               </a>
-
-  
             </div>
           </div>
         </div>

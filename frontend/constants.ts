@@ -32,12 +32,18 @@ import taahir_pic from "./assets/Group_Members/Taahir.jpeg";
 import ackash_pic from "./assets/Group_Members/Ackaash.jpg";
 
 //initial robo design pictures
-import robo_1 from "./assets/Meeting_Images/initial_robot_design/robo_1.jpeg"
-import robo_2 from "./assets/Meeting_Images/initial_robot_design/robo_2.jpeg"
-import robo_3 from "./assets/Meeting_Images/initial_robot_design/robo_everyone.jpeg"
-import robo_4 from "./assets/Meeting_Images/initial_robot_design/printer_frame_body.jpeg"
-import robo_5 from "./assets/Meeting_Images/initial_robot_design/printer_base.jpeg"
-import robo_6 from "./assets/Meeting_Images/initial_robot_design/printer_body.jpeg"
+import robo_1 from "./assets/Meeting_Images/initial_robot_design/robo_1.jpeg";
+import robo_2 from "./assets/Meeting_Images/initial_robot_design/robo_2.jpeg";
+import robo_3 from "./assets/Meeting_Images/initial_robot_design/robo_everyone.jpeg";
+import robo_4 from "./assets/Meeting_Images/initial_robot_design/printer_frame_body.jpeg";
+import robo_5 from "./assets/Meeting_Images/initial_robot_design/printer_base.jpeg";
+import robo_6 from "./assets/Meeting_Images/initial_robot_design/printer_body.jpeg";
+
+//final_robot_model
+import pic1 from "./assets/Meeting_Images/final_robot_model/pic1.jpeg";
+import pic2 from "./assets/Meeting_Images/final_robot_model/pic2.jpeg";
+import pic3 from "./assets/Meeting_Images/final_robot_model/pic3.jpeg";
+import pic4 from "./assets/Meeting_Images/final_robot_model/pic4.jpeg";
 
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -63,8 +69,9 @@ export const FEATURES_DATA = [
     description: "Monitors and visualizes patient improvement over time.",
   },
   {
-    title: "Gamified Exercises",
-    description: "Makes therapy engaging and fun to boost motivation.",
+    title: "Therapist Assigned Exercises and Therapy Mode",
+    description:
+      "Threapy Exercises assigned by the therapist or can be done by user",
   },
   {
     title: "Multi-modal Interaction",
@@ -88,12 +95,12 @@ export const TECH_STACK_DATA = {
     { name: "USB Microphone and built in Speakers" },
   ],
   software: [
-    { name: "Whisper API " },
+    { name: "OpenAI (Whisper & LLMS)" },
     { name: "Supabase" },
-    { name: "TensorFlow" },
-    { name: "Recharts" },
+    { name: "LangGraph & LangChain" },
+    { name: "Tailwind CSS" },
     { name: "Fast API " },
-    { name: "Azure AI Services" },
+    { name: "Kivy" },
   ],
 };
 
@@ -173,10 +180,16 @@ export const JOURNEY_DATA = [
       "An in-depth discussion was held with Chalindu Yohan, the founder of Team Novalith, whom we met at Vertex, where he also demonstrated his project in person. He explained the core concepts and development approach behind his work, sharing valuable insights gained from his experience, including key technical decisions and lessons learned. During the interaction, he introduced the idea of implementing AI agents to enhance system intelligence and automation, which inspired new directions for improving the overall project approach.",
     images: [novalith1, novalith2],
   },
-{
+  {
     title: "Initial Robot Design",
     description:
       "For our physical prototype, we designed a custom 3D-printed enclosure to securely house the Raspberry Pi and sensor array. Leveraging internal resources, our team member Sahetyan utilized his personal 3D printer for the fabrication, allowing us to significantly reduce costs by purchasing only the filament. This strategic division of labor allowed Sahetyan to spearhead the hardware engineering and mechanical assembly, while the rest of the team dedicated their efforts to developing the sophisticated Machine Learning models and software architecture.",
     images: [robo_1, robo_2, robo_3, robo_4, robo_5, robo_6],
+  },
+  {
+    title: "Final Robot Model",
+    description:
+      "The final iteration of the Waabi robot represents the successful convergence of our hardware engineering and software development efforts. The fully assembled 3D-printed chassis securely houses the Raspberry Pi edge-compute unit, servo motors for physical responsiveness, and an OLED display for engaging visual feedback. With the physical construction complete and the USB microphone integrated for capturing patient speech telemetry, we successfully bridged the local hardware with our cloud-based FastAPI multi-agent pipeline, transforming the prototype into a fully interactive therapeutic assistant.",
+    images: [pic1, pic2, pic3, pic4],
   },
 ];

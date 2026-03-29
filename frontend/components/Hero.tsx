@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
               </h1>
 
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 leading-relaxed font-medium">
-                Your intelligent AI companion for aphasia recovery.{" "}
+                Your intelligent AI Robot for aphasia recovery.{" "}
                 <br className="hidden md:block" />
                 Bridging the gap between{" "}
                 <strong className="text-[#A29BFE]">
